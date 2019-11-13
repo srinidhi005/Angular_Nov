@@ -1,0 +1,25 @@
+<div class="content">
+<div class="form-group">
+		<button  type="button" (click)="tableToExcel('myTable','RMI_Insights_Export')"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
+			<i class="fa fa-file-excel-o" aria-hidden="true"></i>	 EXCEL
+			  </button>  
+	 <button  type="button" (click)="Export()"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
+		<i class="fa fa-file-pdf-o"></i>	 PDF
+	  </button>
+	<label for="sel2"></label>
+	<select class="form-control" onchange="updateProjectionPdf()"  id="sel2" style="color: black;">
+		
+		<option>Select </option>
+			<option value=1> Scenario 1 </option>
+			<option value=2> Scenario 2</option>
+			<option value=3> Scenario 3</option>
+			<option value=4> Scenario 4</option>
+		
+			 </select>
+			
+		   </div>
+<table id="myTable" border="1" >
+	<tr></tr>
+
+</table>
+</div>
