@@ -35,17 +35,26 @@ import * as draggablePoints from 'highcharts-draggable-points/draggable-points.j
     
     ngOnInit() {
         draggablePoints(Highcharts1);
-        
-var yearsArray = [];
+	var yearsArray = [];
+	var nextScenarioNo;
+        var companyName; 
+        var scenarioNumber;
+        var scenarioCount;
+        var assumptionArray = [];
+        var actualObj;
+        var previousAmount=0;
 var inputArray= [];
+        function fun1(){
+             yearsArray = [];
+             inputArray= [];
 try {
 	var queryString = window.location.href.split("?")[1];
-	var companyName = (queryString.split("&")[0]).split("=")[1];
-	var scenarioNumber = (queryString.split("&")[1]).split("=")[1];
+	 companyName = (queryString.split("&")[0]).split("=")[1];
+	 scenarioNumber = (queryString.split("&")[1]).split("=")[1];
 } catch (error) {
 	console.log(error);
 }
- var scenarioCount = 0;
+  scenarioCount = 0;
 
 
 $("#excelId").attr("href","/pdf?companyName="+companyName);
@@ -53,7 +62,7 @@ $("#actualsId").attr("href","/actual?CompanyName="+companyName);
 $("#financialId").attr("href","/FinancialModel?CompanyName="+companyName);
 $("#metricsbtn").attr("href","#/pdf?CompanyName="+companyName);
 
-var assumptionArray = [];
+ assumptionArray = [];
 let actualsInput = {
 	"async": true,
 	"crossDomain": true,
@@ -67,12 +76,10 @@ let actualsInput = {
 	},
 	"processData": false,
 }
-	var actualObj = new Map();
-	var rojectionObj = new Map();
-	var actualXAxis = [];
-    var assumptionArray = [];
+	 actualObj = new Map();
+ 
     var obj=[];
-	var previousAmount = 0;
+	 previousAmount = 0;
 	$('#cover-spin').show();
 	$.ajax(actualsInput).done(function (response){
 	$('#cover-spin').hide();
@@ -97,10 +104,15 @@ let actualsInput = {
 	});
 
 
-        
-        
-            
-                var revenueGrowthChart =  (Highcharts1 as any).chart(this.container.nativeElement, {
+	}
+
+
+	
+        fun1();
+           
+	let obj:any = {};
+
+	var revenueGrowthChart =  (Highcharts1 as any).chart(this.container.nativeElement, {
         // Created pie chart using Highchart
         chart: {
           type: 'column',
@@ -114,8 +126,8 @@ let actualsInput = {
              categories: assumptionArray
         },
             yAxis: {
-                min : -50,
-                max : 50,
+                min : -100,
+                max : 100,
                 title : {
                     text:'In Percentage %'
                 }
@@ -157,12 +169,12 @@ let actualsInput = {
         },
         series: [{
             name: '',
-          data : [],
-            //  data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
+	    data : [],
+	    //data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
            
             draggableY: true,
-            dragMinY: -50,
-            dragMaxY: 50,
+            dragMinY: -100,
+            dragMaxY: 100,
             type: "column",
             minPointLength: 2,
             showInLegend: false
@@ -187,9 +199,9 @@ let actualsInput = {
         },
         yAxis: {
 			min : 0,
-			max : 100,
+		
 			title : {
-				text:'Percentage of Revenue'
+				text:'As % of Revenue'
 			}
 		},
         plotOptions: {
@@ -200,7 +212,7 @@ let actualsInput = {
                         drag: function (e) {
                         },
                         drop: function (e) {  
-                            updateP_TotalRevenueChart(e.y,e.target.category,e.x);
+                            updatedCOGSChart(e.y,e.target.category,e.x);
                         }
                     }
                 },
@@ -229,11 +241,11 @@ let actualsInput = {
         },
         series: [{
             name: '',
-             data : [],
-            // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
+	    data : [],
+	    // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
             draggableX: false,
             draggableY: true,
-            dragMinY: 0,
+            dragMinY: -50,
             dragMaxY: 100,
             type: 'column',
             minPointLength: 2,
@@ -246,8 +258,11 @@ let actualsInput = {
       var SGAndAChart=(Highcharts1 as any).chart(this.contain.nativeElement, {
         // Created pie chart using Highchart
         chart: {
-          type: 'column'
-        
+          type: 'column',
+          options3d: {
+            enabled: true,
+            alpha: 45
+          }
         },
         title: {
             text: 'SG&A'
@@ -258,9 +273,9 @@ let actualsInput = {
         },
         yAxis: {
 			min : 0,
-			max : 100,
+			
 			title : {
-				text:'Percentage of Revenue'
+				text:'As % of Revenue'
 			}
 		},
         plotOptions: {
@@ -271,7 +286,7 @@ let actualsInput = {
                         drag: function (e) {
                         },
                         drop: function (e) {  
-                            updateP_TotalRevenueChart(e.y,e.target.category,e.x);
+                            updatedSGAndAChart(e.y,e.target.category,e.x);
                         }
                     }
                 },
@@ -300,12 +315,12 @@ let actualsInput = {
         },
         series: [{
             name: '',
-             data : [],
-            // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
+	     data : [],
+	     // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
             draggableX: false,
             draggableY: true,
             dragMinY: -50,
-            dragMaxY: 50,
+            dragMaxY: 100,
             type: 'column',
             minPointLength: 2,
             showInLegend: false
@@ -332,9 +347,9 @@ let actualsInput = {
         },
         yAxis: {
 			min : 0,
-			max : 100,
+			
 			title : {
-				text:'Percentage of Revenue'
+				text:'As % of Revenue'
 			}
 		},
         plotOptions: {
@@ -345,7 +360,7 @@ let actualsInput = {
                         drag: function (e) {
                         },
                         drop: function (e) {  
-                            updateP_TotalRevenueChart(e.y,e.target.category,e.x);
+                            updatedDAndAChart(e.y,e.target.category,e.x);
                         }
                     }
                 },
@@ -374,12 +389,12 @@ let actualsInput = {
         },
         series: [{
             name: '',
-             data : [],
-            // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
+	    data : [],
+	    // data: [obj.get(yearsArray[0]).DAndA,obj.get(yearsArray[1]).DAndA,obj.get(yearsArray[2]).DAndA,obj.get(yearsArray[3]).DAndA],
             draggableX: false,
             draggableY: true,
             dragMinY: -50,
-            dragMaxY: 50,
+            dragMaxY: 100,
             type: 'column',
             minPointLength: 2,
             showInLegend: false
@@ -391,7 +406,11 @@ let actualsInput = {
     var otherIncomeOrExpenseChart=    (Highcharts1 as any).chart(this.conta.nativeElement, {
         // Created pie chart using Highchart
         chart: {
-          type: 'column'
+          type: 'column',
+          options3d: {
+            enabled: true,
+            alpha: 45
+          }
         },
         title: {
             text: 'Other Income / Expense'
@@ -401,10 +420,10 @@ let actualsInput = {
              categories: assumptionArray
         },
         yAxis: {
-			min : 0,
+			min : -100,
 			max : 100,
 			title : {
-				text:'Percentage of Revenue'
+				text:'As % of Revenue'
 			}
 		},
         plotOptions: {
@@ -415,7 +434,7 @@ let actualsInput = {
                         drag: function (e) {
                         },
                         drop: function (e) {  
-                            updateP_TotalRevenueChart(e.y,e.target.category,e.x);
+                            updatedOtherIncomeChart(e.y,e.target.category,e.x);
                         }
                     }
                 },
@@ -444,12 +463,12 @@ let actualsInput = {
         },
         series: [{
             name: '',
-             data : [],
-            // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
+	     data : [],
+	    // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
             draggableX: false,
             draggableY: true,
-            dragMinY: -50,
-            dragMaxY: 50,
+            dragMinY: -100,
+            dragMaxY: 100,
             type: 'column',
             minPointLength: 2,
             showInLegend: false
@@ -478,7 +497,7 @@ let actualsInput = {
 			min : 0,
 			
 			title : {
-				text:'Percentage of Revenue'
+				text:'USD'
 			}
 		},
         plotOptions: {
@@ -513,17 +532,16 @@ let actualsInput = {
          
             yDecimals: 2,
              valueDecimals: 0,
-            valueSuffix:"%"
+            valuePrefix:"$"
     
         },
         series: [{
             name: '',
-             data : [],
-            // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
+	     data : [],
+	    //data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
             draggableX: false,
             draggableY: true,
-            dragMinY: -50,
-            dragMaxY: 50,
+         
             type: 'column',
             minPointLength: 2,
             showInLegend: false
@@ -532,14 +550,22 @@ let actualsInput = {
        
       });
 
+	Highcharts.setOptions({
+	                lang: {
+			                        thousandsSep: ','
+						                }
+								        });
+
+
     var p_totalRevenueChart=  (Highcharts as any).chart(this.con.nativeElement, {
         // Created pie chart using Highchart
-        chart: {
+
+	chart: {
           type: 'column'
          
         },
         title: {
-            text: 'ProjectionOne'
+            text: 'Total Revenue'
         },
     
         xAxis: {
@@ -549,7 +575,7 @@ let actualsInput = {
 			min : 0,
 			
 			title : {
-				text:'Percentage of Revenue'
+				text:'USD'
 			}
 		},
         plotOptions: {
@@ -581,7 +607,7 @@ let actualsInput = {
          
             yDecimals: 2,
              valueDecimals: 0,
-            valueSuffix:"%"
+            valuePrefix:"$"
     
         },
         colors: [
@@ -609,7 +635,7 @@ let actualsInput = {
         
         },
         title: {
-            text: 'ProjectionTwo'
+            text: 'Gross Profit'
         },
     
         xAxis: {
@@ -619,7 +645,7 @@ let actualsInput = {
 			min : 0,
 			
 			title : {
-				text:'Percentage of Revenue'
+				text:'USD'
 			}
 		},
         plotOptions: {
@@ -630,7 +656,7 @@ let actualsInput = {
                         drag: function (e) {
                         },
                         drop: function (e) {  
-                            updateP_TotalRevenueChart(e.y,e.target.category,e.x);
+                            updatedCOGSChart(e.y,e.target.category,e.x);
                         }
                     }
                 },
@@ -651,7 +677,7 @@ let actualsInput = {
          
             yDecimals: 2,
              valueDecimals: 0,
-            valueSuffix:"%"
+            valuePrefix:"$"
     
         },
         colors: [
@@ -679,7 +705,7 @@ let actualsInput = {
         
         },
         title: {
-            text: 'ProjectionThree'
+            text: 'EBIT'
         },
     
         xAxis: {
@@ -689,7 +715,7 @@ let actualsInput = {
 			min : 0,
 		
 			title : {
-				text:'Percentage of Revenue'
+				text:'USD'
 			}
 		},
         plotOptions: {
@@ -700,7 +726,7 @@ let actualsInput = {
                         drag: function (e) {
                         },
                         drop: function (e) {  
-                            updateP_TotalRevenueChart(e.y,e.target.category,e.x);
+                            updatedSGAndAChart(e.y,e.target.category,e.x);
                         }
                     }
                 },
@@ -722,16 +748,17 @@ let actualsInput = {
          
             yDecimals: 2,
              valueDecimals: 0,
-            valueSuffix:"%"
+            valuePrefix:"$"
     
         },
         colors: [
             'skyblue','skyblue','skyblue','grey','grey','grey','grey'],
         series: [{
             name: '',
-             data : [],
-            // data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
-            draggableX: false,
+	     data : [],
+	     //data: [obj.get(yearsArray[0]).COGS,obj.get(yearsArray[1]).COGS,obj.get(yearsArray[2]).COGS,obj.get(yearsArray[3]).COGS],
+	   
+	     draggableX: false,
             draggableY: false,
             dragMinY: -50,
             dragMaxY: 50,
@@ -750,7 +777,7 @@ let actualsInput = {
          
         },
         title: {
-            text: 'ProjectionFour '
+            text: 'EBITDA'
         },
     
         xAxis: {
@@ -760,7 +787,7 @@ let actualsInput = {
 			min : 0,
 		
 			title : {
-				text:'Percentage of Revenue'
+				text:'USD'
 			}
 		},
         plotOptions: {
@@ -793,7 +820,7 @@ let actualsInput = {
          
             yDecimals: 2,
              valueDecimals: 0,
-            valueSuffix:"%"
+            valuePrefix:"$"
     
         },
         colors: [
@@ -821,7 +848,7 @@ let actualsInput = {
          
         },
         title: {
-            text: 'ProjectionFive '
+            text: 'EBT'
         },
     
         xAxis: {
@@ -831,7 +858,7 @@ let actualsInput = {
 			min : 0,
 			
 			title : {
-				text:'Percentage of Revenue'
+				text:'USD'
 			}
 		},
         plotOptions: {
@@ -863,7 +890,7 @@ let actualsInput = {
          
             yDecimals: 2,
              valueDecimals: 0,
-            valueSuffix:"%"
+            valuePrefix:"$"
     
         },
         colors: [
@@ -891,7 +918,7 @@ let actualsInput = {
          
         },
         title: {
-            text: 'ProjectionSix '
+            text: 'Net Income'
         },
     
         xAxis: {
@@ -901,7 +928,7 @@ let actualsInput = {
 			min : 0,
 			
 			title : {
-				text:'Percentage of Revenue'
+				text:'USD'
 			}
 		},
         plotOptions: {
@@ -933,7 +960,7 @@ let actualsInput = {
          
             yDecimals: 2,
              valueDecimals: 0,
-            valueSuffix:"%"
+            valuePrefix:"$"
     
         },
         colors: [
@@ -997,22 +1024,35 @@ function loadData(){
     $('#cover-spin').hide();
         let presentScenarios = [];
         presentScenarios = (JSON.parse(response)).scenarios;
+        console.log("1:",presentScenarios);
+        console.log("2:",scenarioNumber);
         //presentScenarios = [0];
         if(presentScenarios.includes(parseInt(scenarioNumber))){
             assumptionInput.url = "http://34.67.197.111:8000/projections?company="+companyName+"&scenario="+scenarioNumber;
 
         }
         for(let index = 1;index <= presentScenarios.length ; index++){
+            console.log("3:typeof presentScenarios[index] ",typeof presentScenarios[index] );
             if(typeof presentScenarios[index] != 'undefined'){
                 scenarioCount = index + 1;
                 $("#scenario"+presentScenarios[index]).show();
-                $("#scenarioa"+presentScenarios[index]).attr("href","#/FinancialModel?companyName="+companyName+"&senario="+presentScenarios[index]);
+		$("#scenarioa"+presentScenarios[index]).attr("href","#/FinancialModel?companyName="+companyName+"&senario="+presentScenarios[index]);
+
+            }else if(index == 1){
+                // scenarioCount = index;
+                $("#addNewScenario").hide();
+
             }
         }
-        if(scenarioCount <= 4 && scenarioCount >= 0){
+        console.log("4:scenarioCount",scenarioCount);
+        if(scenarioCount <= 4 && scenarioCount > 0){
             //  scenarioNumber = parseInt(scenarioCount);
-            $("#addNewScenario").show();
+            console.log("scenarioCount",scenarioCount);
+	    $("#addNewScenario").show();
+	    nextScenarioNo=scenarioCount;
             $("#addNewScenario").attr("href","#/FinancialModel?companyName="+companyName+"&senario="+(scenarioCount));
+        }else{
+            $("#addNewScenario").hide();
         }
         if(parseInt(scenarioNumber) <= 4 && parseInt(scenarioNumber) >= 0){
         	$("#saveScenario").show();
@@ -1074,27 +1114,33 @@ function loadData(){
     
     
     function updateP_TotalRevenueChart(x,y,index){
+        console.log("xyz",x,y,index);
         actualObj.get(y).revenueGrowth = x;
         updateProjection(actualObj);
     }
     function updatedCOGSChart(x,y,index){
+    console.log("Cogs",x,y,index);
         actualObj.get(y).COGS = x;
         updateProjection(actualObj);
     }
     function updatedSGAndAChart(x,y,index){
+    console.log("SGa",x,y,index);
         actualObj.get(y).SGAndA = x;
         updateProjection(actualObj);
     }
     function updatedDAndAChart(x,y,index){
+   console.log("Da",x,y,index);
         actualObj.get(y).DAndA = x;
         updateProjection(actualObj);
     }
     function updatedOtherIncomeChart(x,y,index){
+    console.log("otherincome",x,y,index);
         actualObj.get(y).otherIncomeOrExpense = x;
         updateProjection(actualObj);
     }
     
     function updateProjection(obj){
+    console.log("update projection",obj);
         let totalRevenueArray = [];
         let p_GrossProfitArray = [];
         let p_EBITArray = [];
@@ -1197,13 +1243,40 @@ function loadData(){
     //     });
     
     // }
+
+    $("#scenario1").click(function(){
+    window.location.href='http://34.67.197.111/#/FinancialModel?companyName='+companyName+'&senario=1';
+	            location.reload();
+		    });
+		    $("#scenario2").click(function(){ 
+		    window.location.href='http://34.67.197.111/#/FinancialModel?companyName='+companyName+'&senario=2';	    
+		                location.reload();
+				});
+				$("#scenario3").click(function(){
+				window.location.href='http://34.67.197.111/#/FinancialModel?companyName='+companyName+'&senario=3';	    
+				            location.reload();
+					            });
+						    $("#scenario4").click(function(){
+						    window.location.href='http://34.67.197.111/#/FinancialModel?companyName='+companyName+'&senario=4';	    
+						                location.reload();
+								        });
+
+
+
+									$("#addNewScenario").click(function(){
+							window.location.href='http://34.67.197.111/#/FinancialModel?companyName='+companyName+'&senario='+nextScenarioNo;
+									location.reload();
+									});
+
+
+
     $("#saveScenario").click(function(){
       
-
+       
         for (let [key, value] of actualObj) {
-	
-              let inputObj:any={};
-	    
+                  let inputObj:any = {};
+              
+              
                 
                     if(typeof actualObj.get(key).COGS !== 'undefined'){
                         
@@ -1259,8 +1332,10 @@ function loadData(){
                 $.ajax(saveDetails).done(function (response){
                     $('#cover-spin').hide();
                     console.log(response)	
-                     loadData();
-                     scenarioNumber=(parseInt(scenarioNumber)+1).toString();
+		    // loadData();
+		    location.reload();
+                     console.log(" scenarioNumber from save function,",scenarioNumber);
+                    // scenarioNumber=(parseInt(scenarioNumber)+1).toString();
                 });
     });
     }

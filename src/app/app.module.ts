@@ -9,6 +9,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -21,9 +22,9 @@ import { ComponentsModule } from "./components/components.module";
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent],
   providers: [],
   bootstrap: [AppComponent],
-
+	exports:[LoginComponent]
 })
 export class AppModule {}

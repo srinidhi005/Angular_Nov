@@ -56,12 +56,6 @@ export const ROUTES: RouteInfo[] = [
     title: "pdf",
     icon: "icon-align-center",
     class: ""
-  },
-  {
-    path: "/login",
-    title: "login",
-    icon: "icon-align-center",
-    class: ""
   }
 ];
 

@@ -662,7 +662,7 @@ def inject_db(json_data,latest_enum):
                         print(code, "----------")
                         AM_IS_EXP = float(code["total"]["value"])
 
-                if json_data["company"] == "paypal holdings inc" or json_data["company"] == "fitbit inc":
+                if json_data["company"] == "paypal holdings inc":
                     if code["code"] == "AM_IS_E":
                         print(code, "----------")
                         AM_IS_E = float(code["total"]["value"])
@@ -676,7 +676,16 @@ def inject_db(json_data,latest_enum):
                                 SGA += i['value']
                         AM_IS_EXP = SGA
                         AM_IS_CORS = AM_IS_E - AM_IS_EXP
-
+                # if json_data["company"] == "fitbit inc":
+                #     SGA = 0
+                #     for code in data["statement"]:
+                #         if code["desc"] == 'Research and development':
+                #             SGA += code["value"]
+                #         if code["desc"] == 'Sales and marketing':
+                #             SGA += code["value"]
+                #         if code["desc"] == 'General and administrative':
+                #             SGA += code["value"]
+                #     AM_IS_EXP = SGA
             gross_profit = AM_IS_I - AM_IS_CORS
             ebit = gross_profit - AM_IS_EXP
             ebitda = ebit + AM_IS_DEP_AMO
@@ -737,7 +746,7 @@ def inject_db(json_data,latest_enum):
                             print(code,"----------")
                             AM_IS_EXP = float(code["total"]["value"])
 
-                    if json_data["company"] == "paypal holdings inc" or json_data["company"] == "fitbit inc":
+                    if json_data["company"] == "paypal holdings inc":
                         if code["code"] == "AM_IS_E":
                             print(code,"----------")
                             AM_IS_E = float(code["total"]["value"])
@@ -751,6 +760,17 @@ def inject_db(json_data,latest_enum):
                                     SGA += i['value']
                             AM_IS_EXP = SGA
                             AM_IS_CORS = AM_IS_E - AM_IS_EXP
+                    # if json_data["company"] == "fitbit inc":
+                    #     SGA = 0
+                    #     for code in data["statement"]:
+                    #         if code["desc"] == 'Research and development':
+                    #             SGA += code["value"]
+                    #         if code["desc"] == 'Sales and marketing':
+                    #             SGA += code["value"]
+                    #         if code["desc"] == 'General and administrative':
+                    #             SGA += code["value"]
+                    #     AM_IS_EXP = SGA
+
                 gross_profit = AM_IS_I - AM_IS_CORS
                 ebit = gross_profit - AM_IS_EXP
                 ebitda = ebit + AM_IS_DEP_AMO

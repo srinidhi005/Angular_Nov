@@ -37,7 +37,8 @@
               "src/assets/js/High.js",
               "src/assets/js/statement.js",
               "src/assets/js/pdf.js",
-              "src/assets/js/import.js"
+              "src/assets/js/import.js",
+	      "src/assets/js/login.js"
            ],
             "es5BrowserSupport": true
           },

@@ -28,7 +28,7 @@ export class PdfComponent implements OnInit {
 // 			      var row1 = table.insertRow(0);
 // 			       var cell2 = row1.insertCell(0);
 			       
-// 			       cell1.innerHTML = '<img src="http://34.67.197.111/Public/dist/img/RMI.jpg">';
+// 			       cell1.innerHTML = '<img src="http://34.67.197.111/assets/img/RMI.jpg">';
 // 		     cell2.innerHTML = "<b>" + 'Company Name: '+" "+companyName+"</b>";
 
 // 				        var ctx = {worksheet: name || companyName, table: table.innerHTML}
@@ -58,7 +58,7 @@ export class PdfComponent implements OnInit {
      
 	        return function(table, name) {
 				var heading=companyName;
-		var  imgsrc1='http://34.67.197.111/Public/dist/img/RMI.jpg';
+				var  imgsrc1='http://34.67.197.111/assets/img/RMI.jpg';
 		 
 			    if (!table.nodeType) table = document.getElementById(table)
                 // var ctx = {worksheet: name || 'RMI_Insights_Export'+postfix,imgsrc1: imgsrc1,  heading: heading , table: table.innerHTML}
@@ -74,10 +74,10 @@ export class PdfComponent implements OnInit {
 
 	// $('<tr><td colspan="8" style="text-align:left"><b>'+"  "+'Company Name: '+' '+companyName+'</b></td></tr>').insertBefore('table > tbody > tr:first');
 	$('#myTable').prepend('<tr />').children('tr:first').append('<td colspan="8" ><b>'+"  "+'Company Name: '+' '+companyName+'</b></td>')
-	$('#myTable').append("<tr><td colspan='8' style='text-align:left'><img src='http://34.67.197.111/Public/dist/img/RMI.jpg'></td></tr>");
+	$('#myTable').append("<tr><td colspan='8' style='text-align:left'><img src='http://34.67.197.111/assets/img/RMI.jpg'></td></tr>");
      
 
-	// 						     $('#myTable').append("<tr><td colspan='8' style='text-align:left'><img src='http://34.67.197.111/Public/dist/img/RMI.jpg'></td></tr>");																				   
+		// 						     $('#myTable').append("<tr><td colspan='8' style='text-align:left'><img src='http://34.67.197.111/assets/img/RMI.jpg'></td></tr>");																				   
 	html2canvas(document.getElementById('myTable'),{
 			    
                 onrendered: function (canvas) {

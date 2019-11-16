@@ -1,25 +1,29 @@
 <div class="content">
 <div class="form-group">
 		<button  type="button" (click)="tableToExcel('myTable','RMI_Insights_Export')"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
-			<i class="fa fa-file-excel-o" aria-hidden="true"></i>	 EXCEL
+			<i class="fa fa-file-excel-o" aria-hidden="true"></i>	Export to EXCEL
 			  </button>  
 	 <button  type="button" (click)="Export()"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
-		<i class="fa fa-file-pdf-o"></i>	 PDF
+		<i class="fa fa-file-pdf-o"></i> Export to	 PDF
 	  </button>
-	<label for="sel2"></label>
-	<select class="form-control" onchange="updateProjectionPdf()"  id="sel2" style="color: black;">
-		
-		<option>Select </option>
-			<option value=1> Scenario 1 </option>
-			<option value=2> Scenario 2</option>
-			<option value=3> Scenario 3</option>
-			<option value=4> Scenario 4</option>
-		
-			 </select>
+	<!-- <label for="sel2"></label> -->
+		<select type="button"  class="btn btn-sm btn-primary btn-simple  mr-1 float-right"  onchange="updateProjectionPdf()"  id="sel2" >
 			
-		   </div>
-<table id="myTable" border="1" >
-	<tr></tr>
+			<option>Scenarios</option>
+				<option value=1> Scenario 1 </option>
+				<option value=2> Scenario 2</option>
+				<option value=3> Scenario 3</option>
+				<option value=4> Scenario 4</option>
+			
+				 </select>
+				
 
-</table>
+				
+		   </div>
+		   <div class="mt-5 ml-5">
+		   <table  id="myTable" border="1" >
+			<tr></tr>
+		
+		</table>
+	</div>
 </div>

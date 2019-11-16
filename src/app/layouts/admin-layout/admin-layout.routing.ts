@@ -8,7 +8,6 @@ import { UserComponent } from "../../pages/FinancialModel/user.component";
 import { TablesComponent } from "../../pages/statement/tables.component";
 import { TargetvActualComponent } from "../../pages/TargetvActual/TargetvActual.component";
 import {PdfComponent} from "../../pages/pdf/pdf.component";
-import { LoginComponent } from '../../pages/login/login.component';
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "source", component: IconsComponent },
@@ -17,6 +16,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: "TargetvActual", component: TargetvActualComponent },
   { path: "statement", component: TablesComponent },
    { path: "FinancialModel", component: UserComponent },
-   { path: "pdf", component: PdfComponent },
-   {path:"login", component:LoginComponent}
+   { path: "pdf", component: PdfComponent }
 ];

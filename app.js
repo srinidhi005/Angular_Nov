@@ -561,11 +561,14 @@ app.get('/file_output', function(req, res, next) {
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) 
       return next();
-  res.redirect('/');
+  res.redirect('#/');
 }
 
 app.use(express.static(__dirname + '/dist/'));
-app.get('/*',(req,res)=> res.sendFile(path.join(__dirname)));
+	app.get('/#/statement',isLoggedIn, function(req, res) {
+	    res.sendFile(path.join(__dirname + '/statement.component.html'));
+});
+  
 const server = http.createServer(app);
 server.listen(port,()=>console.log("yay! running its UP..."));
 
