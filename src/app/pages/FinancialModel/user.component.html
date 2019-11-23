@@ -1,3 +1,20 @@
+<style>
+    .alert{
+        display: none;
+    }
+    .myAlert-top{
+  
+    top: 2px; 
+   
+    width: 100%;
+}
+.myAlert-tops{
+  
+  top: 2px; 
+ 
+  width: 100%;
+}
+</style>
 <div class="content">
     <a href="" id="metricsbtn"><button type="button" class="btn btn-sm btn-primary btn-simple mr-1 float-right" data-toggle="modal" data-target="#myModal">
         Metrics
@@ -6,13 +23,23 @@
     Visuals
   </button></a> -->
     
-  <button type="button" id="saveScenario"   class="btn btn-sm btn-primary btn-simple mr-1 float-right" data-toggle="modal" data-target="#myModal">
+  <button type="button" id="saveScenario"  class="btn btn-sm btn-primary btn-simple mr-1 float-right"  onclick="myAlertTops()"  data-toggle="modal" data-target="#myModal">
     Save Scenario
   </button>
- <a href=""  id="addNewScenario"> <button  type="button"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
+  <div class="myAlert-tops alert alert-success">
+     
+        Saving the scenario
+    </div>
+ <!-- <a href=""  id="addNewScenario"> <button  type="button"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
     Add Scenario
-  </button></a> 
- 
+  </button></a>  -->
+  
+  <a   id="addNewScenario"> <button type="button" class="btn btn-sm btn-primary btn-simple mr-1 float-right" onclick="myAlertTop()">Add Scenario</button></a> 
+  <div class="myAlert-top alert alert-success">
+     
+      Adding new scenario
+    </div>
+
     <h4 class="pl-2 pt-1">Assumptions</h4>
     
       <div class=" row">

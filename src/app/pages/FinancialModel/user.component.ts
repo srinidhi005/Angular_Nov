@@ -55,8 +55,8 @@ try {
 	console.log(error);
 }
   scenarioCount = 0;
-
-
+  $("#navcompany").show();
+$("#navcompany").text("  :companyName: " + companyName + "   :Scenario"+scenarioNumber);
 $("#excelId").attr("href","/pdf?companyName="+companyName);
 $("#actualsId").attr("href","/actual?CompanyName="+companyName);
 $("#financialId").attr("href","/FinancialModel?CompanyName="+companyName);
@@ -272,7 +272,7 @@ let actualsInput = {
              categories: assumptionArray
         },
         yAxis: {
-			min : 0,
+			crosshair:true,
 			
 			title : {
 				text:'As % of Revenue'
@@ -494,7 +494,7 @@ let actualsInput = {
              categories: assumptionArray
         },
         yAxis: {
-			min : 0,
+		  crosshair: true,
 			
 			title : {
 				text:'USD'
@@ -508,7 +508,7 @@ let actualsInput = {
                         drag: function (e) {
                         },
                         drop: function (e) {  
-                            updateP_TotalRevenueChart(e.y,e.target.category,e.x);
+                            updatenetinterestchart(e.y,e.target.category,e.x);
                         }
                     }
                 },
@@ -569,10 +569,12 @@ let actualsInput = {
         },
     
         xAxis: {
-            categories: yearsArray
+	categories: yearsArray,
+	  crosshair: true
         },
         yAxis: {
-			min : 0,
+	
+	  crosshair: true,
 			
 			title : {
 				text:'USD'
@@ -639,10 +641,12 @@ let actualsInput = {
         },
     
         xAxis: {
-             categories: yearsArray
+	categories: yearsArray,
+	  crosshair: true
         },
         yAxis: {
-			min : 0,
+	
+	  crosshair: true,
 			
 			title : {
 				text:'USD'
@@ -709,10 +713,12 @@ let actualsInput = {
         },
     
         xAxis: {
-             categories: yearsArray
+	categories: yearsArray,
+	  crosshair: true
         },
         yAxis: {
-			min : 0,
+	
+	  crosshair: true,
 		
 			title : {
 				text:'USD'
@@ -781,10 +787,11 @@ let actualsInput = {
         },
     
         xAxis: {
-             categories: yearsArray
+	categories: yearsArray,
+	  crosshair: true
         },
         yAxis: {
-			min : 0,
+	  crosshair: true,
 		
 			title : {
 				text:'USD'
@@ -852,10 +859,12 @@ let actualsInput = {
         },
     
         xAxis: {
-             categories: yearsArray
+	categories: yearsArray,
+	  crosshair: true
         },
         yAxis: {
-			min : 0,
+	
+	  crosshair: true,
 			
 			title : {
 				text:'USD'
@@ -922,10 +931,12 @@ let actualsInput = {
         },
     
         xAxis: {
-             categories: yearsArray
+	categories: yearsArray,
+	  crosshair: true
         },
         yAxis: {
-			min : 0,
+	
+	  crosshair: true,
 			
 			title : {
 				text:'USD'
@@ -1138,7 +1149,13 @@ function loadData(){
         actualObj.get(y).otherIncomeOrExpense = x;
         updateProjection(actualObj);
     }
-    
+
+			 function updatenetinterestchart(x,y,index){
+			     console.log("netie",x,y,index);
+			             actualObj.get(y).netIterestExpense = x;
+				     updateProjection(actualObj);
+				     }
+
     function updateProjection(obj){
     console.log("update projection",obj);
         let totalRevenueArray = [];

@@ -1,135 +1,384 @@
-NAME:  TJX COMPANIES INC      
-TICKER SYMBOL:  TJX      
-PRIMARY SIC CODE:  5651      
+NAME:  TAPESTRY INC      
+TICKER SYMBOL:  TPR      
+PRIMARY SIC CODE:  3100      
 STOCK EXCHANGE:  11 New York Stock Exchange     
-CUSIP:  872540      
+CUSIP:  876030      
         
         
 STATEMENT OF FINANCIAL POSITION        
 Fiscal Year:  2015  2016  2017  2018    
-(FYR Ending):  (31JAN2016 ) (31JAN2017 ) (31JAN2018 ) ( N/A )   
+(FYR Ending):  (30JUN2015 ) (30JUN2016 ) (30JUN2017 ) (30JUN2018 )   
 ASSETS        
-Â Â Â Â Cash & Equivalents  2447.786 3473.091 3264.642    
-Â Â Â Â Receivables - Total (Net)  249.131 258.831 327.166    
-Â Â Â Â Inventories - Total  3695.113 3644.959 4187.243    
-Â Â Â Â Prepaid Expenses        
-Â Â Â Â Current Assets - Other  380.53 373.893 706.676    
+    Cash & Equivalents  1,525.800 1,319.400 3,083.600 1,250.000   
+    Receivables - Total (Net)  219.500 245.200 309.500 339.900   
+    Inventories - Total  485.100 459.200 469.700 673.800   
+    Prepaid Expenses  73.100 58.000 58.600 82.600   
+    Current Assets - Other  203.000 91.100 31.900 86.300   
         
-Current Assets - Total  6772.56 7750.774 8485.727    
+Current Assets - Total  2,506.500 2,172.900 3,953.300 2,432.600   
         
-Â Â Â Â Plant, Property & Equip (Gross)  9068.667 9003.403 9968.308    
-Â Â Â Â Accumulated Depreciation  4931.092 4470.509 4962.255    
+    Plant, Property & Equip (Gross)  1,573.600 1,781.300 1,489.500 1,839.800   
+    Accumulated Depreciation  841.000 861.800 798.100 954.400   
         
-Plant, Property & Equip (Net)  4137.575 4532.894 5006.053    
+Plant, Property & Equip (Net)  732.600 919.500 691.400 885.400   
         
-Â Â Â Â Investments at Equity  0 0 0    
-Â Â Â Â Investments and Advances - Other  0 0 0    
-Â Â Â Â Intangibles  343.796 342.556 244.954    
-Â Â Â Â Deferred Charges  0 0 0    
-Â Â Â Â Assets - Other  245.551 257.584 321.281    
+    Investments at Equity  320.200 460.500 .000 .000   
+    Investments and Advances - Other  85.800 98.100 75.100 .000   
+    Intangibles  794.100 849.200 821.300 3,217.200   
+    Deferred Charges  .000 .000 .000 .000   
+    Assets - Other  227.700 392.500 290.500 143.100   
         
-TOTAL ASSETS  11499.482 12883.808 14058.015    
+TOTAL ASSETS  4,666.900 4,892.700 5,831.600 6,678.300   
         
 LIABILITIES        
-Â Â Â Â Accounts Payable  2203.05 2230.904 2488.373    
-Â Â Â Â Notes Payable  0 0 0    
-Â Â Â Â Accrued Expenses        
-Â Â Â Â Taxes Payable  129.521 206.288 114.203    
-Â Â Â Â Debt (Long-Term) Due In One Year  0 0 0    
-Â Â Â Â Other Current Liabilities  2069.659 2320.464 2522.961    
+    Accounts Payable  222.800 186.700 194.600 264.300   
+    Notes Payable  .000 .000 .000 .000   
+    Accrued Expenses  507.300 531.100 464.100 576.000   
+    Taxes Payable  .000 .000 .000 .000   
+    Debt (Long-Term) Due In One Year  11.300 15.000 .000 .700   
+    Other Current Liabilities  93.300 93.900 95.100 97.200   
         
-Total Current Liabilities  4402.23 4757.656 5125.537    
+Total Current Liabilities  834.700 826.700 753.800 938.200   
         
-Â Â Â Â Long Term Debt  1709.268 2403.831 2452.524    
-Â Â Â Â Deferred Taxes (Balance Sheet)  285.102 314 233.057    
-Â Â Â Â Investment Tax Credit  0 0 0    
-Â Â Â Â Liabilities - Other  795.807 897.722 1098.588    
-Â Â Â Â Noncontrolling Interest - Redeemable  0 0 0    
+    Long Term Debt  879.100 861.200 1,579.500 1,599.900   
+    Deferred Taxes (Balance Sheet)  60.000 57.300 63.300 206.200   
+    Investment Tax Credit  .000 .000 .000 .000   
+    Liabilities - Other  403.200 464.600 433.100 689.400   
+    Noncontrolling Interest - Redeemable  .000 .000 .000 .000   
         
-TOTAL LIABILITIES  7192.407 8373.209 8909.706    
+TOTAL LIABILITIES  2,177.000 2,209.800 2,829.700 3,433.700   
         
 SHAREHOLDERS' EQUITY        
-Â Â Â Â Preferred Stock  0 0 0    
-Â Â Â Â Common Stock  663.496 646.319 628.009    
-Â Â Â Â Capital Surplus  0 0 0    
-Â Â Â Â Retained Earnings (Net Other)  3643.579 3864.28 4520.3    
-Â Â Â Â Less: Treasury Stock  0 0 0    
-Shareholders Equity - Parent  4307.075 4510.599 5148.309    
-Noncontrolling Interest - Nonredeemable  0 0 0    
+    Preferred Stock  .000 .000 .000 .000   
+    Common Stock  2.800 2.800 2.800 2.900   
+    Capital Surplus  2,754.400 2,857.100 2,978.300 3,205.500   
+    Retained Earnings (Net Other)  -267.300 -177.000 20.800 36.200   
+    Less: Treasury Stock  .000 .000 .000 .000   
+Shareholders Equity - Parent  2,489.900 2,682.900 3,001.900 3,244.600   
+Noncontrolling Interest - Nonredeemable  .000 .000 .000 .000   
         
-TOTAL SHAREHOLDERS EQUITY  4307.075 4510.599 5148.309    
+TOTAL SHAREHOLDERS EQUITY  2,489.900 2,682.900 3,001.900 3,244.600   
         
-TOTAL LIABILITIES AND EQUITY  11499.482 12883.808 14058.015    
+TOTAL LIABILITIES AND EQUITY  4,666.900 4,892.700 5,831.600 6,678.300   
         
         
 INCOME STATEMENT        
 Fiscal Year:  2015  2016  2017  2018    
-(FYR Ending):  (31JAN2016 ) (31JAN2017 ) (31JAN2018 ) ( N/A )   
-Sales (Net)  30944.938 33183.744 35864.664    
-Â Â Â Â Cost of Goods Sold  21412.523 22901.254 24774.967    
+(FYR Ending):  (30JUN2015 ) (30JUN2016 ) (30JUN2017 ) (30JUN2018 )   
+Sales (Net)  4,191.600 4,491.800 4,488.300 5,880.000   
+    Cost of Goods Sold  1,081.500 1,228.800 1,191.500 1,649.400   
         
-Gross Profit  9532.415 10282.49 11089.697    
-Â Â Â Â Selling, General, & Admin Expenses  5205.715 5768.467 6275.071    
+Gross Profit  3,110.100 3,263.000 3,296.800 4,230.600   
+    Selling, General, & Admin Expenses  2,129.800 2,275.800 2,271.400 2,978.400   
         
-Operating Income Before Depreciation  4326.7 4514.023 4814.626    
-Â Â Â Â Depreciation, Depletion, & Amortiz  622 664.5 727.2    
+Operating Income Before Depreciation  980.300 987.200 1,025.400 1,252.200   
+    Depreciation, Depletion, & Amortiz  191.800 210.600 212.800 260.300   
         
-Operating Income After Depreciation  3704.7 3849.523 4087.426    
-Â Â Â Â Interest Expense  68.253 69.219 69.237    
-Â Â Â Â Non-Operating Income/Expense  21.853 25.685 37.649    
-Â Â Â Â Special Items  0 -82.946 -199.25    
+Operating Income After Depreciation  788.500 776.600 812.600 991.900   
+    Interest Expense  11.900 32.900 17.300 86.300   
+    Non-Operating Income/Expense  5.500 6.000 -1.600 12.300   
+    Special Items  -170.500 -123.100 -34.700 -321.100   
         
-Pretax Income  3658.3 3723.043 3856.588    
-Â Â Â Â Income Taxes - Total  1380.642 1424.809 1248.64    
-Â Â Â Â Minority Interest  0 0 0    
-Income Before EI&DO  2277.658 2298.234 2607.948    
-Â Â Â Â Extraordinary Items  0 0 0    
-Â Â Â Â Discontinued Operations  0 0 0    
+Pretax Income  611.600 626.600 759.000 596.800   
+    Income Taxes - Total  209.200 166.100 168.000 199.300   
+    Minority Interest  .000 .000 .000 .000   
+Income Before EI&DO  402.400 460.500 591.000 397.500   
+    Extraordinary Items  .000 .000 .000 .000   
+    Discontinued Operations  .000 .000 .000 .000   
         
-Net Income (Loss)  2277.658 2298.234 2607.948    
+Net Income (Loss)  402.400 460.500 591.000 397.500   
+Income Before EI&DO  402.400 460.500 591.000 397.500   
         
         
 STATEMENT OF CASH FLOWS        
 Fiscal Year:  2015  2016  2017  2018    
-(FYR Ending):  (31JAN2016 ) (31JAN2017 ) (31JAN2018 ) ( N/A )   
+(FYR Ending):  (30JUN2015 ) (30JUN2016 ) (30JUN2017 ) (30JUN2018 )   
 INDIRECT OPERATING ACTIVITIES        
-Income Before Extraordinary Items  2277.658 2298.234 2607.948    
-Depreciation and Amortizations  616.696 658.796 725.957    
-Extraordinary Items and Disc. Operations  0 0 0    
-Deferred Taxes  31.204 -5.503 -137.44    
-Equity in Net Loss (Earnings)  0 0 0    
-Sale of PPEq and Investments - Loss (Gain)        
-Funds from Operations - Other  16.67 86.922 214.603    
-Receivables - Decrease (Increase)  -27.357 -23.235 -62.358    
-Inventory - Decrease (Increase)  -506.633 11.862 -450.377    
-Accounts/P and Accrued Liabs - Inc(Dec)        
-Income Taxes - Accrued - Increase(Decrease)  68.014 146.766 -94.492    
-Other Assets and Liabilities - Net Change  461.091 428.052 221.783    
+Income Before Extraordinary Items  402.400 460.500 591.000 397.500   
+Depreciation and Amortizations  191.800 210.600 212.800 260.300   
+Extraordinary Items and Disc. Operations  .000 .000 .000 .000   
+Deferred Taxes  21.500 -52.300 78.000 -50.900   
+Equity in Net Loss (Earnings)        
+Sale of PPEq and Investments - Loss (Gain)  .000 .000 .000 .000   
+Funds from Operations - Other  152.700 102.500 68.500 220.600   
+Receivables - Decrease (Increase)  .300 -28.300 -29.400 -5.600   
+Inventory - Decrease (Increase)  29.200 40.700 -20.000 30.400   
+Accounts/P and Accrued Liabs - Inc(Dec)  127.600 -18.300 -41.700 -94.200   
+Income Taxes - Accrued - Increase(Decrease)  .000 .000 .000 .000   
+Other Assets and Liabilities - Net Change  11.900 43.200 -5.400 238.600   
         
-Operating Actiities - Net Cash Flow  2937.343 3601.894 3025.624    
+Operating Actiities - Net Cash Flow  937.400 758.600 853.800 996.700   
         
 INVESTING ACTIVITIES        
-Investments - Increase  0 0 0    
-Sale of Investments  0 0 0    
-Short term Investments - Change  -116.631 -187.807 44.881    
-Capital Expenditures  889.38 1024.747 1057.617    
-Sale of Property Plant and Equipment  0 0 0    
-Acquisitions  57.104 2.324 0    
-Investing Activities - Other  0 0 0    
+Investments - Increase  188.700 805.000 523.500 3.800   
+Sale of Investments  305.200 425.900 1,271.800 482.200   
+Short term Investments - Change        
+Capital Expenditures  199.300 396.400 283.100 267.400   
+Sale of Property Plant and Equipment  .000 .000  .000   
+Acquisitions  519.600 25.600 .000 2,375.800   
+Investing Activities - Other  -10.500 -8.900 127.800 .000   
         
-Investing Activites - Net Cash Flow  -1063.115 -1214.878 -1012.736    
+Investing Activites - Net Cash Flow  -612.900 -810.000 593.000 -2,164.800   
         
 FINANCING ACTIVITIES        
-Sale of Common and Preferred Stock  132.033 164.19 133.687    
-Purchase of Common and Preferred Stock  1828.297 1699.998 1663.855    
-Cash Dividends  544.271 650.988 764.04    
-Long Term Debt - Issuance  0 992.54 0    
-Long Term Debt - Reduction  0 425.584 0    
-Current Debt - Changes  0 0 0    
-Financing Activities - Other  0 -13.071 -3.138    
+Sale of Common and Preferred Stock  36.500 29.100 70.400 165.700   
+Purchase of Common and Preferred Stock  .000 .000 21.500 31.500   
+Cash Dividends  371.800 374.500 378.000 384.100   
+Long Term Debt - Issuance  896.700 .000 997.200 1,100.000   
+Long Term Debt - Reduction  .500 15.000 285.000 1,100.000   
+Current Debt - Changes  -140.000      
+Financing Activities - Other  -26.000 -15.500 -9.800 .000   
         
-Financing Activities - Net Cash Flow  -2175.855 -1561.912 -2297.346    
+Financing Activities - Net Cash Flow  389.300 -384.900 369.500 -249.900   
         
-Exchange Rate Effect  -96.675 9.272 113.086    
+Exchange Rate Effect  -13.900 3.500 -2.400 -11.500   
         
-Cash and Cash Equivalents - Change  -398.302 834.376 -171.372    
+Cash and Cash Equivalents - Change  699.900 -432.800 1,813.900 -1,429.500   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

@@ -3,8 +3,8 @@
 		<button  type="button" (click)="tableToExcel('myTable','RMI_Insights_Export')"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
 			<i class="fa fa-file-excel-o" aria-hidden="true"></i>	Export to EXCEL
 			  </button>  
-	 <button  type="button" (click)="Export()"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
-		<i class="fa fa-file-pdf-o"></i> Export to	 PDF
+	 <button  type="button" (click)="download()"  class="btn btn-sm btn-primary btn-simple mr-1 float-right" >
+		<i class="fa fa-file-pdf-o"></i> Export to PDF
 	  </button>
 	<!-- <label for="sel2"></label> -->
 		<select type="button"  class="btn btn-sm btn-primary btn-simple  mr-1 float-right"  onchange="updateProjectionPdf()"  id="sel2" >
@@ -20,7 +20,7 @@
 
 				
 		   </div>
-		   <div class="mt-5 ml-5">
+		   <div class="mt-5 ml-3" style="padding-right:5px">
 		   <table  id="myTable" border="1" >
 			<tr></tr>
 		

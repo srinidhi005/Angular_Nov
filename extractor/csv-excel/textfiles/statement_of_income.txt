@@ -1,27 +1,28 @@
 INCOME STATEMENT        
 Fiscal Year:  2015  2016  2017  2018    
-(FYR Ending):  (31JAN2016 ) (31JAN2017 ) (31JAN2018 ) ( N/A )   
-Sales (Net)  30944.938 33183.744 35864.664    
-Â Â Â Â Cost of Goods Sold  21412.523 22901.254 24774.967    
+(FYR Ending):  (30JUN2015 ) (30JUN2016 ) (30JUN2017 ) (30JUN2018 )   
+Sales (Net)  4,191.600 4,491.800 4,488.300 5,880.000   
+    Cost of Goods Sold  1,081.500 1,228.800 1,191.500 1,649.400   
         
-Gross Profit  9532.415 10282.49 11089.697    
-Â Â Â Â Selling, General, & Admin Expenses  5205.715 5768.467 6275.071    
+Gross Profit  3,110.100 3,263.000 3,296.800 4,230.600   
+    Selling, General, & Admin Expenses  2,129.800 2,275.800 2,271.400 2,978.400   
         
-Operating Income Before Depreciation  4326.7 4514.023 4814.626    
-Â Â Â Â Depreciation, Depletion, & Amortiz  622 664.5 727.2    
+Operating Income Before Depreciation  980.300 987.200 1,025.400 1,252.200   
+    Depreciation, Depletion, & Amortiz  191.800 210.600 212.800 260.300   
         
-Operating Income After Depreciation  3704.7 3849.523 4087.426    
-Â Â Â Â Interest Expense  68.253 69.219 69.237    
-Â Â Â Â Non-Operating Income/Expense  21.853 25.685 37.649    
-Â Â Â Â Special Items  0 -82.946 -199.25    
+Operating Income After Depreciation  788.500 776.600 812.600 991.900   
+    Interest Expense  11.900 32.900 17.300 86.300   
+    Non-Operating Income/Expense  5.500 6.000 -1.600 12.300   
+    Special Items  -170.500 -123.100 -34.700 -321.100   
         
-Pretax Income  3658.3 3723.043 3856.588    
-Â Â Â Â Income Taxes - Total  1380.642 1424.809 1248.64    
-Â Â Â Â Minority Interest  0 0 0    
-Income Before EI&DO  2277.658 2298.234 2607.948    
-Â Â Â Â Extraordinary Items  0 0 0    
-Â Â Â Â Discontinued Operations  0 0 0    
+Pretax Income  611.600 626.600 759.000 596.800   
+    Income Taxes - Total  209.200 166.100 168.000 199.300   
+    Minority Interest  .000 .000 .000 .000   
+Income Before EI&DO  402.400 460.500 591.000 397.500   
+    Extraordinary Items  .000 .000 .000 .000   
+    Discontinued Operations  .000 .000 .000 .000   
         
-Net Income (Loss)  2277.658 2298.234 2607.948    
+Net Income (Loss)  402.400 460.500 591.000 397.500   
+Income Before EI&DO  402.400 460.500 591.000 397.500   
         
         

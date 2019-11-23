@@ -9,8 +9,8 @@ dicti={'Cash Equivalents':['Cash','Cash Equivalents','Cash & Equivalents','Cash 
 'PPE':['Plant,Property & Equip(Gross)','Plant,Property & Equipment','Plant,Property and Equipment','PPE'],
 'PPE(Net)':['Property,plant and equipment,net','Plant,Property & Equipment,net','Property,plant and equipment,less accumulated depreciation','Property and equipment,net','Plant and equipment,net','Plant,Property & Equip(net)','Plant,property & Equipment(Net)','Plant,property and Equipment(Net)','PPE(Net)'],
 'Intangible Assets':['Identifiable intangible assets, net','Other intangible assets','Intangible assets, net','Identifiable intangible assets, less accumulated amortization','Other intangible assets, net'],
-'Net Revenue':['Net Sales','Net Revenue','Net Revenues','Revenue','Revenues','Net Sale'],
-'Cost of Revenue':['Cost of Sales','Cost of Revenues','Cost of Sale','Cost of Revenue'],
+'Net Revenue':['Net Sales','Net Revenue','Net Revenues','Revenue','Revenues','Net Sale','Total revenues','Total revenue'],
+'Cost of Revenue':['Cost of Sales','Cost of Revenues','Cost of Sale','Cost of Revenue','COGs', 'Cost of goods sold','Cost reimbursement revenue','Total cost of revenues'],
 'Cost of goods sold':['COGs','Cost of goods sold'],
 'Gross Profit':['Gross Margin','Gross Profit'],
 'Operating Income/loss':['Operating income','Operating loss','Operating income (loss)','Operating Profit','Income from operations','Operating Income/Loss','Loss from operations','Profit from operations','Operating income or loss'],
@@ -65,7 +65,7 @@ import nltk
 import pandas as pd
 import os
 import csv
-
+from db_connection import *
 
 
 
@@ -91,8 +91,8 @@ for i in list_folder:
 
 ####################################
 
-if len(sys.argv) == 5:
-	pd.read_excel(filee, header=None).to_csv(sys.argv[4], index=False,header=None)
+# if len(sys.argv) == 5:
+# 	pd.read_excel(filee, header=None).to_csv(sys.argv[4], index=False,header=None)
 
 ####################################################################################################
 
@@ -111,7 +111,8 @@ dp=[]
 k1=0
 
 if len(sys.argv) == 5:
-	csv_file = sys.argv[4]
+	# csv_file = sys.argv[4]
+	csv_file = filee
 else:
 	csv_file = filee
 txt_file = sys.argv[3]+"/text/csv_text.txt"
@@ -247,11 +248,7 @@ def sub_items(filepath):
 
 main_json={}
 out_m=0
-
-
-
-
-
+json_collection = []
 
 start_line=0
 
@@ -322,13 +319,6 @@ for th in os.listdir(os.path.join(cwd_path,folder)):
 		codelist.append(code)
 		newlist.append(translated)
 		suggestion_flag.append(flag)
-	#tdf=pd.DataFrame()
-
-	#tdf['Original']=[x for x in dataframe_list if x]
-	#tdf['Transformed']=[x1 for x1 in newlist if x1]
-	#tdf['Code']=[x2 for x2 in codelist if x2]
-	#tdf['suggestion']=[x for x3 in suggestion_flag if x3]
-	#tdf
 
 ###########################################################################  2 #######################################################
 	original1=[]
@@ -456,13 +446,10 @@ for th in os.listdir(os.path.join(cwd_path,folder)):
 		k+=1
 
 
-	with open(sys.argv[2]+"{}.json".format(out_m), "w") as outfile:
+	with open("output/{}.json".format(out_m), "w") as outfile:
 		json.dump(main_json,outfile,indent=4)
 
-
-
-
-
+	json_collection.append(main_json)
 	out_m+=1
 	main_json={}
 
@@ -492,24 +479,186 @@ for m,n,p,i,g in zip(dp,inc_expense,inc_tax,net_inc_loss,gross):
 		total_expense.append(val4)
 
 
-
-#if ebitda and ebit and ebt:
-#folder=sys.argv[2].replace('/file', '')
-#folder=folder.replace('./', '')
-# if ebitda and ebit and ebt:
-#print(ebitda)
-
 folder=sys.argv[2].replace('/file', '')
 folder=folder.replace('./', '')
-for th in os.listdir(os.path.join(cwd_path, folder)):
-	file_path = os.path.join(cwd_path, folder, th)
-	with open(file_path,"r+") as json_data:
-		d=json.load(json_data)
-		if d['title'] == "statement_of_income":
-			for i,j,k,a,b,c,d1,m,t in zip(ebitda,ebit,ebt,net_inc_loss,dp,inc_expense,inc_tax,d['period'],total_expense):
-				m['Additional']=[{"desc":"Non-Cash Expenses & Non-Recurring One-Time Charges","code":"AM_I_EXP ","value":t},{"desc":"EBITDA","code":"EB1","value":i,"items":[{"desc":"EBIT","code":"EB2","value":j},{"desc":"Depreciation & Amortization","code":"DA","value":b}]},{"desc":"EBIT","code":"EB2","value":j,"items":[{"desc":"EBT","code":"EB3","value":k},{"desc":"Interest Expense/Income","code":"IE","value":c}]},{"desc":"EBT","code":"EB3","value":k,"items":[{"desc":"Net Income/Loss","code":"AM_IS_NI","value":float(a)},{"desc":"Income Tax","code":"IT","value":float(d1)}]}]
 
-		json_data.seek(0)  # rewind
-		json.dump(d,json_data,indent=4)
-		json_data.truncate()
+for d in json_collection:
+	if d['title'] == "statement_of_income":
+		for i,j,k,a,b,c,d1,m,t in zip(ebitda,ebit,ebt,net_inc_loss,dp,inc_expense,inc_tax,d['period'],total_expense):
+			m['Additional']=[{"desc":"Non-Cash Expenses & Non-Recurring One-Time Charges","code":"AM_I_EXP ","value":t},{"desc":"EBITDA","code":"EB1","value":i,"items":[{"desc":"EBIT","code":"EB2","value":j},{"desc":"Depreciation & Amortization","code":"DA","value":b}]},{"desc":"EBIT","code":"EB2","value":j,"items":[{"desc":"EBT","code":"EB3","value":k},{"desc":"Interest Expense/Income","code":"IE","value":c}]},{"desc":"EBT","code":"EB3","value":k,"items":[{"desc":"Net Income/Loss","code":"AM_IS_NI","value":float(a)},{"desc":"Income Tax","code":"IT","value":float(d1)}]}]
+
+		json_copy = d
+		print("*" * 30)
+		print(d)
+		print("*" * 30)
+print("-"*50)
+print(json_copy)
+
+##########################################################
+
+
+def inject_db(json_data,latest_enum):
+    con = db_connect()  # connect to database
+    if con is not None:
+        cursor = con.cursor()
+        query = "delete from company_actuals where companyname='"+sys.argv[4]+"'"
+        cursor.execute(query)
+        con.commit()
+        for data in json_data["period"]:
+            if data["asof"][-4:] ==  latest_enum[0] :
+                continue
+            for key,val in latest_enum.items():
+                # print(key, val)
+                if val.lower() == (data["asof"][-4:]).lower():
+                    latest = key
+                    break
+
+            for code in data["Additional"]:
+                if code["code"] == "AM_IS_EXP":
+                    AM_IS_EXP = int(code["value"])
+                if code["code"] == "AM_IS_DEP_AMO":
+                    AM_IS_DEP_AMO = int(code["value"])
+                if code["code"] == "AM_IS_TX":
+                    AM_IS_TX = int(code["value"])
+                if code["code"] == "AM_IS_NIEXP":
+                    AM_IS_NIEXP = int(code["value"])
+                if code["code"] == "AM_IS_OE":
+                    AM_IS_OE = int(code["value"])
+
+            for code in data["statement"]:
+                try:
+                    if code["code"] == "AM_IS_I":
+                        AM_IS_I = int(code["value"])
+                except:
+                    AM_IS_I = int(code["total1"]["value"])
+                try:
+                    if code["code"] == "AM_IS_CORS":
+                        AM_IS_CORS = int(code["value"])
+                except:
+                    try:
+                        AM_IS_CORS = int(code["total1"]["value"])
+                    except:
+                        AM_IS_CORS = int(code["items"][3]["value"])
+
+                if json_data["company"] == "tesla inc":
+                    if code["code"] == "AM_IS_E":
+                        print(code, "----------")
+                        AM_IS_EXP = float(code["total"]["value"])
+
+                if json_data["company"] == "paypal holdings inc":
+                    if code["code"] == "AM_IS_E":
+                        print(code, "----------")
+                        AM_IS_E = float(code["total"]["value"])
+                        AM_IS_CORS = AM_IS_E - AM_IS_EXP
+
+            gross_profit = AM_IS_I - AM_IS_CORS
+            ebit = gross_profit - AM_IS_EXP
+            ebitda = ebit + AM_IS_DEP_AMO
+            ebt = ebit - AM_IS_NIEXP - AM_IS_OE
+            netincome = ebt - AM_IS_TX
+            grossprofitmargin = float((gross_profit / AM_IS_I) * 100)
+            ebitmargin = float((ebit / AM_IS_I) * 100)
+            ebitdamargin = float((ebitda / AM_IS_I) * 100)
+            ebtmargin = float((ebt / AM_IS_I) * 100)
+            netincomemargin = float((netincome / AM_IS_I) * 100)
+
+            query = "insert into company_actuals (companyname,asof,latest,totalrevenue,cogs,sga,da,netinterest,otherincome," \
+                    "taxes,grossprofit,ebit,ebitda,netincome,grossprofitmargin,ebitmargin,ebitdamargin,ebtmargin,netincomemargin,ebt) values(" \
+                    "'" + sys.argv[4] + "'," + str(data["asof"][-4:]) + "," + str(
+                latest) + "," + str(AM_IS_I) + "," + str(AM_IS_CORS) + "," + str(AM_IS_EXP) + "," + str(
+                AM_IS_DEP_AMO) + "," + str(AM_IS_NIEXP) + "," + str(AM_IS_OE) + "," + str(AM_IS_TX) + "," + str(gross_profit) + "," + str(ebit) + "" \
+              "," + str(ebitda) + "," + str(netincome) + "," + str(grossprofitmargin) + "," + str(ebitmargin) + "," + str(ebitdamargin) + "" \
+              "," + str(ebtmargin) + "," + str(netincomemargin) + "," + str(ebt) +")"
+            cursor.execute(query)
+            con.commit()
+        for data in json_data["period"]:
+            if data["asof"][-4:] ==  latest_enum[0] :
+                for key, val in latest_enum.items():
+                    # print(key,val)
+                    if val.lower() == (data["asof"][-4:]).lower():
+                        latest = key
+                        break
+
+                for code in data["Additional"]:
+                    if code["code"] == "AM_IS_EXP":
+                        AM_IS_EXP = int(code["value"])
+                    if code["code"] == "AM_IS_DEP_AMO":
+                        AM_IS_DEP_AMO = int(code["value"])
+                    if code["code"] == "AM_IS_TX":
+                        AM_IS_TX = int(code["value"])
+                    if code["code"] == "AM_IS_NIEXP":
+                        AM_IS_NIEXP = int(code["value"])
+                    if code["code"] == "AM_IS_OE":
+                        AM_IS_OE = int(code["value"])
+
+                for code in data["statement"]:
+                    try:
+                        if code["code"] == "AM_IS_I":
+                            AM_IS_I = int(code["value"])
+                    except:
+                        AM_IS_I = int(code["total1"]["value"])
+                    try:
+                        if code["code"] == "AM_IS_CORS":
+                            AM_IS_CORS = int(code["value"])
+                    except:
+                        try:
+                            AM_IS_CORS = int(code["total1"]["value"])
+                        except:
+                            AM_IS_CORS = int(code["items"][3]["value"])
+
+                    if json_data["company"] == "tesla inc":
+                        if code["code"] == "AM_IS_E":
+                            print(code,"----------")
+                            AM_IS_EXP = float(code["total"]["value"])
+
+                    if json_data["company"] == "paypal holdings inc":
+                        if code["code"] == "AM_IS_E":
+                            print(code,"----------")
+                            AM_IS_E = float(code["total"]["value"])
+                            AM_IS_CORS = AM_IS_E - AM_IS_EXP
+                gross_profit = AM_IS_I - AM_IS_CORS
+                ebit = gross_profit - AM_IS_EXP
+                ebitda = ebit + AM_IS_DEP_AMO
+                ebt = ebit - AM_IS_NIEXP - AM_IS_OE
+                netincome = ebt - AM_IS_TX
+                grossprofitmargin = float((gross_profit / AM_IS_I) * 100)
+                ebitmargin = float((ebit / AM_IS_I) * 100)
+                ebitdamargin = float((ebitda / AM_IS_I) * 100)
+                ebtmargin = float((ebt / AM_IS_I) * 100)
+                netincomemargin = float((netincome / AM_IS_I) * 100)
+
+                query = "insert into company_actuals (companyname,asof,latest,totalrevenue,cogs,sga,da,netinterest,otherincome," \
+                        "taxes,grossprofit,ebit,ebitda,netincome,grossprofitmargin,ebitmargin,ebitdamargin,ebtmargin,netincomemargin,ebt) values(" \
+                        "'" + sys.argv[4] + "'," + str(data["asof"][-4:]) + "," + str(
+                    latest) + "," + str(AM_IS_I) + "," + str(AM_IS_CORS) + "," + str(AM_IS_EXP) + "," + str(
+                    AM_IS_DEP_AMO) + "," + str(AM_IS_NIEXP) + "," + str(AM_IS_OE) + "," + str(AM_IS_TX) + "," + str(
+                    gross_profit) + "," + str(ebit) + "," + str(ebitda) + "," + str(netincome) + "," + str(
+                    grossprofitmargin) + "," + str(ebitmargin) + "," + str(ebitdamargin) + "," + str(
+                    ebtmargin) + "," + str(netincomemargin) + "," + str(ebt) +")"
+                cursor.execute(query)
+                con.commit()
+                break
+
+
+def map_to_date_obj(date):
+    # return datetime.strptime(date,"%b%d%Y")
+    return date[-4:]
+def sort_dict(json_data):
+    dates = [date["asof"] for date in json_data["period"]]
+    dates = list(map(map_to_date_obj,dates))
+
+    dates.sort()
+    return dates
+
+def map_to_string(date):
+    return datetime.strftime(date,"%b%d%Y")
+
+dates = sort_dict(json_copy)
+# dates = list(map(map_to_string,dates))
+
+latest_enum = {}
+for i, j in enumerate(dates, -(len(dates) - 1)):
+    latest_enum[i] = j
+# print(latest_enum,"Latest Enum")
+inject_db(json_copy,latest_enum)
 

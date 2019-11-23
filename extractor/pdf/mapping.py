@@ -65,13 +65,18 @@ import itertools
 import decimal
 import openpyxl
 import requests
+import shutil
 
 cwd_path = os.getcwd()
 CWD_PATH = os.getcwd()
 
 file = sys.argv[1]
 # file_name1=sys.argv[2]
-
+path_of_json='./output/'+sys.argv[4]
+if os.path.exists(path_of_json):
+    shutil.rmtree(path_of_json, ignore_errors=True)
+else:
+    os.mkdir(path_of_json)
 
 gross = []
 total_expense = []
@@ -510,7 +515,7 @@ for i in range(pages):
 
         del nt[:n]
         
-        with open("output/{}.json".format(out_m), "w") as outfile:
+        with open(path_of_json+"/{}.json".format(out_m), "w") as outfile:
            json.dump(main_json, outfile, indent=4)
         json_collection.append(main_json)
         out_m += 1

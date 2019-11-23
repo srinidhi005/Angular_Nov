@@ -53,7 +53,7 @@ passport.use(new Strategy(
           },
           raw: true
         }).then(user => {
-			console.log(user)
+console.log(user)
           if (!user) { return cb(null, false); }
           if (user.password != password) { return cb(null, false); }
           return cb(null, user);
@@ -62,8 +62,8 @@ passport.use(new Strategy(
         })
     }
 ));
-  
-  
+ 
+ 
 // Configure Passport authenticated session persistence.
 //
 // In order to restore authentication state across HTTP requests, Passport needs
@@ -74,7 +74,7 @@ passport.use(new Strategy(
 passport.serializeUser(function(user, cb) {
   cb(null, user.id);
 });
-  
+ 
 passport.deserializeUser(function(id, cb) {
   db.users.findByPk(id).then(data => {
     var user = data.get({plain: true})
@@ -87,9 +87,9 @@ passport.deserializeUser(function(id, cb) {
 var indexRouter = require('./routes/index');
 
 var app = express();
-const port=process.env.PORT || 3010;
+const port=process.env.PORT || 3025;
 // view engine setup
-// app.set('view engine', 'jade');
+ app.set('view engine', 'jade');
 
 app.use(express.static(__dirname + '/dist/'));
 
@@ -108,10 +108,12 @@ app.use(session({
 }))
 
 app.use(require('express-session')({
-	secret: 'rmi insight',
-	resave: false,
-	saveUninitialized: false
+secret: 'rmi insight',
+resave: false,
+saveUninitialized: false
 }))
+
+
 
 
 
@@ -157,7 +159,7 @@ app.post('/upload', upload.single('file'), function (req, res, next) {
 app.post('/doc', function (req, res, next) {
   var validation = function() {
     var {companyName, companyUUID, documentUUID, filePath} = req.body;
-    if ((companyName && companyName != '')  && (companyUUID && companyUUID != '') && 
+    if ((companyName && companyName != '')  && (companyUUID && companyUUID != '') &&
     (documentUUID && documentUUID != '') && (filePath && filePath != '')) {
       return true;
     } else {
@@ -365,10 +367,10 @@ app.post('/file_data', function(req, res, next) {
       var obj = jsonData[0], filepath = path.join(__dirname, 'output', el);
       if (index == 1) obj = jsonData[1];
       if (index == 2) obj = jsonData[2];
-	console.log(filepath);	
+console.log(filepath);
       promises.push(jsonfile.writeFile (filepath, obj));
-    
-	})
+   
+})
     return Promise.all(promises);
   }).then(() => {
     var promises = [];
@@ -383,7 +385,7 @@ app.post('/file_data', function(req, res, next) {
     if (documentUUID && documentUUID != '') {
       return db.statement.findOne({where: {id: id}, raw: true}).then(data => {
         var rmiJson = {
-          "company": data.company, 
+          "company": data.company,
           "units": jsonData[0].units,
           "currency": jsonData[0].currency,
           "period": data.period, // possible values [Y=yearly/M=monthly/Q=quartely]
@@ -483,7 +485,7 @@ app.get('/file_output', function(req, res, next) {
         obj.asof = date;
         if (jsonData.type == 'statement_of_income') {
           if (obj.additional) {
-            obj.additional[date] = el.Additional 
+            obj.additional[date] = el.Additional
           } else {
             obj.additional = {[date]: el.Additional};
           }
@@ -559,19 +561,18 @@ app.get('/file_output', function(req, res, next) {
 })
 
 function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) 
+  if (req.isAuthenticated())
       return next();
-  res.redirect('#/');
+  res.redirect('/');
 }
 
 app.use(express.static(__dirname + '/dist/'));
-	app.get('/#/statement',isLoggedIn, function(req, res) {
-	    res.sendFile(path.join(__dirname + '/statement.component.html'));
-});
-  
+
 const server = http.createServer(app);
 server.listen(port,()=>console.log("yay! running its UP..."));
-
+app.get("/*",(req,res)=>{
+  res.sendFile(path.join(__dirname));
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -590,6 +591,8 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
 
 
 

@@ -3,6 +3,7 @@ import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { empty } from 'rxjs';
 
 @Component({
   selector: "app-navbar",
@@ -172,7 +173,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
     return "Dashboard";
   }
-
+getCompanyName(){
+  try {
+    var queryString = window.location.href.split("?")[1];
+   var  companyName = (queryString.split("&")[0]).split("=")[1];
+     var scenarioNumber = (queryString.split("&")[1]).split("=")[1];
+     return " : "+companyName+" : " + "Scenario "+scenarioNumber;
+  } catch (error) {
+    console.log(error);
+    return "";
+  }
+}
   open(content) {
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
