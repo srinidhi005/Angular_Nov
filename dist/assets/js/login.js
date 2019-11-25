@@ -7,7 +7,7 @@ function upload(ev){
     var data = {username: username,password: password};
                $.post('/login', data, function(data, status) {
                     if (data.status == 'SUCCESS') {
-                         window.location = '#/statement';
+                         window.location = '#/source';
                     }
                 })
    

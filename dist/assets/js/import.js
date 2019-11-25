@@ -10,7 +10,19 @@
 
 
  var validationFlag = false;
+
+
+function myAlertTopimport(){
+	        $(".myAlert-top").show();
+	        setTimeout(function(){
+			          $(".myAlert-top").hide(); 
+			        }, 5000);
+	      }
+
+
 function importupload(ev){
+
+        $('.cover-spin').show();
 	$("#startImportBtn").prop("disabled",true);
         ev.preventDefault();
         var file = document.getElementById('inputfilenow').files[0];
@@ -24,8 +36,7 @@ function importupload(ev){
               data.append("period",period);//period);
         data.append("statementtype",statementtype);
         data.append("industry",industry);
-	    console.log("data",data)
-
+	 
 	if (document.getElementById("inputfilenow").files[0]== undefined)
 	{
 		validationFlag=true;
@@ -46,13 +57,12 @@ function importupload(ev){
 	{
 		validationFlag=true;
 	}
-
-	console.log(validationFlag);
 	if(validationFlag)
 	{
 	alert("All fields are mandatory");
 		$("#startImportBtn").prop("disabled",false);
-	return;
+$('.cover-spin').hide();
+		return;
 		}
 	
 		
@@ -67,10 +77,6 @@ function importupload(ev){
            data:data,
 
                       success: function(data) {
-			     
-                          console.log('success');
-                          console.log(JSON.stringify(data));
-            alert("File uploded successfully");
 			      $("#startImportBtn").prop("disabled",false);
         },
             error: function(data){
@@ -79,13 +85,14 @@ function importupload(ev){
         },
                   });
 
-
+		$('.cover-spin').hide();
           return false;
 
 }
 
-
+		
       		function validateCompanyName(){
+		 $('.cover-spin').show();
 			$("#startImportBtn").prop("disabled",true);
                 let companyname=document.getElementById("company").value;
 		let input = {
@@ -105,9 +112,7 @@ function importupload(ev){
 			$("#startImportBtn").prop("disabled",false);
 				var companiesArray=((JSON.parse(response)).companies);
 				var flag = false;
-				console.log(response);
 				for(var i=0;i<companiesArray.length;i++){
-				
 			if(companiesArray[i].toUpperCase()==companyname.toUpperCase())
 					{
 					flag = true;
@@ -118,7 +123,7 @@ function importupload(ev){
 				{
 				validationFlag=true;
 				alert("Name already exists, Please enter a unique name");
-			
+				$('.cover-spin').hide();
 				return false;
 			
 			}
@@ -127,7 +132,8 @@ function importupload(ev){
 				validationFlag=false;
 				}
 
-
+			
 		});
+			$('.cover-spin').hide();
 		}
 

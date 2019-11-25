@@ -87,14 +87,15 @@ passport.deserializeUser(function(id, cb) {
 var indexRouter = require('./routes/index');
 
 var app = express();
-const port=process.env.PORT || 3025;
+const port=process.env.PORT || 3010;
 // view engine setup
  app.set('view engine', 'jade');
 
 app.use(express.static(__dirname + '/dist/'));
 
 app.use(logger('dev'));
-app.use('/public' ,express.static('public'))
+// app.use('/public' ,express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/output' ,express.static('output'))
 app.use('/2ExtractionJSON' ,express.static('2ExtractionJSON'))
 app.use(cookieParser());
@@ -560,17 +561,35 @@ app.get('/file_output', function(req, res, next) {
   })
 })
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated())
-      return next();
-  res.redirect('/');
+// function isLoggedIn(req, res, next) {
+//   if (req.isAuthenticated())
+//       return next();
+//   res.redirect('/');
+// }
+
+function isLoggedIn() {
+  return function(req, res, next) {
+    // isAuthenticated is set by `deserializeUser()`
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+      res.status(401).send({
+        success: false,
+        message: 'You need to be authenticated to access this page!'
+      })
+    } else {
+      next()
+    }
+  }
 }
 
-app.use(express.static(__dirname + '/dist/'));
+
+// app.get("/statement",isLoggedIn,function(req,res){
+// res.render('statement');
+// })
+ app.use(express.static(__dirname + '/dist/'));
 
 const server = http.createServer(app);
 server.listen(port,()=>console.log("yay! running its UP..."));
-app.get("/*",(req,res)=>{
+app.get("#/*",isLoggedIn(),function (req,res){
   res.sendFile(path.join(__dirname));
 });
 // catch 404 and forward to error handler
@@ -595,4 +614,60 @@ module.exports = app;
 
 
 
+
+
+
+// ////////
+var getBackTo = function (req) {
+  var backTo = req.session.backTo || '/';
+  delete req.session.backTo;
+  return backTo;
+};
+
+var getUser = function (req) {
+  var user = req.session.user;
+
+  if (user == null) {
+    throw('Error');
+  } else {
+    return user;
+  }
+};
+
+var getUserOrLogin = function (req, res, next) {
+  var user = req.session.user;
+
+  if (user == null) {
+    req.session.backTo = req.originalUrl;
+    res.redirect('/login');
+  } else {
+    req.user = user;
+    next();
+  }
+};
+
+var redirectWithMessage = function (message, url, req, res) {
+  req.session.messages = message;
+  res.redirect(url);
+};
+
+// Return 'messages' value or null instead
+var getMessages = function (req) {
+  var messages = req.session.messages || null;
+  delete req.session.messages;
+  return messages;
+};
+
+// Set an error message and redirect
+var redirectWithError = function (error, url, req, res) {
+  req.session.errors = error;
+  res.redirect(url);
+};
+
+// Return 'errors' value or null instead
+var getErrors = function (req) {
+  var errors = req.session.errors || null;
+  delete req.session.errors;
+  return errors;
+};
 

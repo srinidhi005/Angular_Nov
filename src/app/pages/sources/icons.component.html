@@ -2,7 +2,58 @@
 select,option{
   color:black;
 }
-</style>
+  .alert{
+	        display: none;
+			  }
+    .myAlert-top{
+
+	      top: 2px; 
+		       
+		        width: 100%;
+    }
+    .myAlert-tops{
+
+	    top: 2px; 
+
+		    width: 100%;
+    }
+
+
+    .cover-spin {
+	        position:fixed;
+			    width:100%;
+				        left:0;right:0;top:0;bottom:0;
+						    background-color: rgba(255,255,255,0.7);
+							        z-index:9999;
+									    display:none;
+    }
+
+    @-webkit-keyframes spin {
+	    	from {-webkit-transform:rotate(0deg);}
+			to {-webkit-transform:rotate(360deg);}
+    }
+
+    @keyframes spin {
+	    	from {transform:rotate(0deg);}
+			to {transform:rotate(360deg);}
+    }
+
+    .cover-spin::after {
+	        content:'';
+			    display:block;
+				        position:absolute;
+						    left:48%;top:40%;
+							        width:40px;height:40px;
+									    border-style:solid;
+										        border-color:black;
+												    border-top-color:transparent;
+													        border-width: 4px;
+															    border-radius:50%;
+																        -webkit-animation: spin .8s linear infinite;
+																		    animation: spin .8s linear infinite;
+    }
+
+      </style>
 <div class=" content">
   <!-- <div class=" row">
     <div class=" col-md-12">
@@ -40,17 +91,17 @@ select,option{
         <div class="modal-body">
          <div class="form-group" >
           
- <input   type="text" id="company" style="color:black" value=" Enter Company Name" onkeypress="allowAlphaNumeric(event)"  class="form-control  mb-2" onfocus="if (this.value == ' Enter Company Name' ) {this.value = '';}" onblur="validateCompanyName()" >
+ <input   type="text" id="company" style="color:black;" value=" Enter Company Name" onkeypress="allowAlphaNumeric(event)"  class="form-control  mb-2" onfocus="if (this.value == ' Enter Company Name' ) {this.value = '';}" onblur="validateCompanyName()" >
             
         
-                      <select class="form-control  mb-2" id="period" style="color:black">
-          <option selected disabled value="">Select Financial Statement Duration</option>
+                      <select class="form-control  mb-2" id="period" style="color:black;">
+          <option selected disabled value="" style="font-style: italic;">Select Financial Statement Duration</option>
          <option value="M">Monthly </option>
         <option value="Q">Quarterly</option> 
         <option value="Y">Yearly</option>
         </select>
-         <select class="form-control mb-2" id="statementtype" style="color:black" >
-          <option selected disabled value="">Select Statement Type</option>
+         <select class="form-control mb-2" id="statementtype" style="color:black;" >
+          <option selected disabled value="" style="font-style: italic;">Select Statement Type</option>
           <option>Income Statement</option>
         <option>Balance Sheet</option> 
         <option>Cash Flow Statement</option>
@@ -58,8 +109,8 @@ select,option{
        
      
         </select>
-        <select class="form-control" id="industry" style="color:black" >
-          <option selected disabled value="">Select Industry</option>
+        <select class="form-control" id="industry" style="color:black;" >
+          <option selected disabled value="" style="font-style: italic;">Select Industry</option>
         <option>Communications</option>
         <option>Consumer & Retail</option> 
         <option>Distribution & Logistics</option>
@@ -80,15 +131,15 @@ select,option{
         
         </div>
         </div>
-        <div class="file-upload-wrapper"  style="width: 500px;padding-left: 160px">
+        <div class="file-upload-wrapper"  style="width: 500px;padding-left: 160px;font-style: italic;">
           <input type="file" value="Drag and drop files here" id="inputfilenow"  class="file-upload" />
         </div>
         <!-- Modal footer -->
         <div class="modal-footer"  style="text-align:-webkit-center;padding-left:160px" >
          <!--<button type="button" class="btn btn-success" data-dismiss="modal" style="text-align:center;">Start Import</button>-->
-          <button  class="btn btn-success"  onclick="importupload(event)" id="startImportBtn" style=" width: 170px;text-align: center;">Start Import</button>
+          <button  class="btn btn-success"  onclick="importupload(event),myAlertTopimport()" id="startImportBtn" style=" width: 170px;text-align: center;">Start Import</button>
         </div>
-        
+	 
       </div>
     </div>
   </div>
@@ -118,5 +169,12 @@ select,option{
 
         </div> -->
       </div>
+
+		 <div class="myAlert-top alert alert-success">
+			    
+			          File Uploaded Successfully Please Go to Statements Page
+				           </div>
+
+					   <div class="cover-spin"></div>
     </div>
   </div>

@@ -11,7 +11,7 @@ module.exports = function(passport) {
 
 		  router.get('/', function(req, res, next) {
 			      if (req.username) {
-				            res.render('index',{username: req.user.username, role: req.user.role});
+				            res.render('source.html',{username: req.user.username, role: req.user.role});
 				          } else {
 						        res.render('login');
 						      }
