@@ -15,6 +15,7 @@ import { TargetvActualComponent } from "../../pages/TargetvActual/TargetvActual.
 import {PdfComponent} from "../../pages/pdf/pdf.component";
 import {LoginComponent} from "../../pages/login/login.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import {ProfileComponent} from "../../pages/user/profile.component";
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     NotificationsComponent,
     MapComponent,
     PdfComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ]
 })
 export class AdminLayoutModule {}

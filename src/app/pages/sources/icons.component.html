@@ -19,7 +19,7 @@ select,option{
     }
 
 
-    .cover-spin {
+    #cover-spin {
 	        position:fixed;
 			    width:100%;
 				        left:0;right:0;top:0;bottom:0;
@@ -38,7 +38,7 @@ select,option{
 			to {transform:rotate(360deg);}
     }
 
-    .cover-spin::after {
+    #cover-spin::after {
 	        content:'';
 			    display:block;
 				        position:absolute;
@@ -137,7 +137,7 @@ select,option{
         <!-- Modal footer -->
         <div class="modal-footer"  style="text-align:-webkit-center;padding-left:160px" >
          <!--<button type="button" class="btn btn-success" data-dismiss="modal" style="text-align:center;">Start Import</button>-->
-          <button  class="btn btn-success"  onclick="importupload(event),myAlertTopimport()" id="startImportBtn" style=" width: 170px;text-align: center;">Start Import</button>
+          <button  class="btn btn-success"  onclick="importupload(event)" id="startImportBtn" style=" width: 170px;text-align: center;">Start Import</button>
         </div>
 	 
       </div>
@@ -175,6 +175,6 @@ select,option{
 			          File Uploaded Successfully Please Go to Statements Page
 				           </div>
 
-					   <div class="cover-spin"></div>
+					   <div id="cover-spin"></div>
     </div>
   </div>

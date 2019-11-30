@@ -4,40 +4,38 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import {IconsComponent} from "./pages/sources/icons.component";
+
 const routes: Routes = [
   {
-         path: "",
-         redirectTo: "login",
-    	 pathMatch: "full"
-		            },
-     {
+      path: "",
+          redirectTo: "login",
+	      pathMatch: "full"
+	      },
+  {
+    path: "",
+    component: AdminLayoutComponent,
+    children: [
+      {
         path: "",
-	component: AdminLayoutComponent,
-       	children: [
-	 {
-	   path: "",
-	   loadChildren:
-	    "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
-	    }
-	   ]
-	   },
-	  {
-	    path: "**",
-	   component: LoginComponent
-	     }
-	  ];
+        loadChildren:
+          "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
+      }
+    ]
+  }, 
+  {
+    path: "**",
+       component: LoginComponent
+  }
+];
 
-	 @NgModule({
-			  imports: [
-			  CommonModule,
-			   BrowserModule,
-			  RouterModule.forRoot(routes, {
-			 useHash: true
-			   })
-			    ],
-			     exports: [RouterModule]
-					 })
-			 export class AppRoutingModule {}
-
-
+@NgModule({
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes, {
+      useHash: true
+    })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}

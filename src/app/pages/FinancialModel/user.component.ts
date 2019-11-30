@@ -55,8 +55,8 @@ try {
 	console.log(error);
 }
   scenarioCount = 0;
-  $("#navcompany").show();
-$("#navcompany").text("  :companyName: " + companyName + "   :Scenario"+scenarioNumber);
+//   $("#navcompany").show();
+// $("#navcompany").text("  :companyName: " + companyName + "   :Scenario"+scenarioNumber);
 $("#excelId").attr("href","/pdf?companyName="+companyName);
 $("#actualsId").attr("href","/actual?CompanyName="+companyName);
 $("#financialId").attr("href","/FinancialModel?CompanyName="+companyName);
@@ -1035,6 +1035,7 @@ function loadData(){
     $('#cover-spin').hide();
         let presentScenarios = [];
         presentScenarios = (JSON.parse(response)).scenarios;
+        
         console.log("1:",presentScenarios);
         console.log("2:",scenarioNumber);
         //presentScenarios = [0];

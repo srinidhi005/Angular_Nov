@@ -561,25 +561,26 @@ app.get('/file_output', function(req, res, next) {
   })
 })
 
-// function isLoggedIn(req, res, next) {
-//   if (req.isAuthenticated())
-//       return next();
-//   res.redirect('/');
+ //function isLoggedIn(req, res, next) {
+ // if (req.isAuthenticated())
+   //    return next();
+   //res.redirect('/');
+//	 res.sendStatus(401);
 // }
 
-function isLoggedIn() {
-  return function(req, res, next) {
+//function isLoggedIn() {
+ // return function(req, res, next) {
     // isAuthenticated is set by `deserializeUser()`
-    if (!req.isAuthenticated || !req.isAuthenticated()) {
-      res.status(401).send({
-        success: false,
-        message: 'You need to be authenticated to access this page!'
-      })
-    } else {
-      next()
-    }
-  }
-}
+   // if (!req.isAuthenticated || !req.isAuthenticated()) {
+     // res.status(401).send({
+       // success: false,
+       // message: 'You need to be authenticated to access this page!'
+    //  })
+    //} else {
+     // next()
+    //}
+ // }
+//}
 
 
 // app.get("/statement",isLoggedIn,function(req,res){
@@ -589,9 +590,9 @@ function isLoggedIn() {
 
 const server = http.createServer(app);
 server.listen(port,()=>console.log("yay! running its UP..."));
-app.get("#/*",isLoggedIn(),function (req,res){
+app.get("#/source",function (req,res){
   res.sendFile(path.join(__dirname));
-});
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -637,10 +638,10 @@ var getUser = function (req) {
 var getUserOrLogin = function (req, res, next) {
   var user = req.session.user;
 
-  if (user == null) {
+ if (user == null) {
     req.session.backTo = req.originalUrl;
     res.redirect('/login');
-  } else {
+ } else {
     req.user = user;
     next();
   }

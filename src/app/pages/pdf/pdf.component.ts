@@ -12,9 +12,44 @@ import pdfMake from 'pdfmake';
 export class PdfComponent implements OnInit {
 
   constructor() { }
-  ngOnInit() {}
+  ngOnInit() {
   
-//   tableToExcel = (function() {
+  	var companyName = decodeURI(window.location.href).split("=")[1];
+	let scenarioInput = {
+	"async": true,
+	"crossDomain": true,
+	"url": "http://34.67.197.111:8000/scenarios?company="+companyName,
+	"method": "GET",
+	"headers": {
+	"authorization": "Basic cm1pX3VzZXI6cm1pMzIxIUAj",
+	"content-type": "application/json",
+	"cache-control": "no-cache",
+	"postman-token": "648dcbfa-30ef-3359-f29a-31b2038f29ac"
+	},
+	"processData": false,
+	}
+
+
+	$.ajax(scenarioInput).done(function (response){
+	  let str="<option _ngcontent-sut-c5='' value='' ng-reflect-value=''> Scenarios </option>";
+	  let presentScenarios = [];
+	  presentScenarios = (JSON.parse(response)).scenarios;
+	  console.log(presentScenarios);
+	  for(var i=1;i<presentScenarios.length;i++){
+		  str=str+"<option _ngcontent-sut-c5='' value='"+presentScenarios[i]+"' ng-reflect-value='"+presentScenarios[i]+"'> Scenario "+presentScenarios[i]+" </option>";
+		  }
+		  $("#sel2").html(str);
+		  });
+
+  
+  
+  
+		  }
+  
+  
+  
+  
+  //   tableToExcel = (function() {
 //     var companyName = decodeURI(window.location.href).split("=")[1];
 // 	  var uri = 'data:application/vnd.ms-excel;base64,'
 // 		      , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>'

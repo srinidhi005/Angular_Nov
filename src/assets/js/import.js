@@ -12,17 +12,9 @@
  var validationFlag = false;
 
 
-function myAlertTopimport(){
-	        $(".myAlert-top").show();
-	        setTimeout(function(){
-			          $(".myAlert-top").hide(); 
-			        }, 5000);
-	      }
-
-
 function importupload(ev){
-
-        $('.cover-spin').show();
+	
+        $("#cover-spin").show();
 	$("#startImportBtn").prop("disabled",true);
         ev.preventDefault();
         var file = document.getElementById('inputfilenow').files[0];
@@ -61,7 +53,7 @@ function importupload(ev){
 	{
 	alert("All fields are mandatory");
 		$("#startImportBtn").prop("disabled",false);
-$('.cover-spin').hide();
+$('#cover-spin').hide();
 		return;
 		}
 	
@@ -77,22 +69,26 @@ $('.cover-spin').hide();
            data:data,
 
                       success: function(data) {
+			      $(".myAlert-top").show();
+			      $("#myModal").modal("hide");
+			      $("#cover-spin").hide();
 			      $("#startImportBtn").prop("disabled",false);
         },
             error: function(data){
+		    $("#cover-spin").hide();
               alert("Error while uploading");
 		    $("#startImportBtn").prop("disabled",false);
         },
                   });
 
-		$('.cover-spin').hide();
+
           return false;
 
 }
 
 		
       		function validateCompanyName(){
-		 $('.cover-spin').show();
+		 $('#cover-spin').show();
 			$("#startImportBtn").prop("disabled",true);
                 let companyname=document.getElementById("company").value;
 		let input = {
@@ -119,11 +115,12 @@ $('.cover-spin').hide();
 				break;
 					}
 				}
+			$("#cover-spin").hide();
 			if ( flag )
 				{
 				validationFlag=true;
 				alert("Name already exists, Please enter a unique name");
-				$('.cover-spin').hide();
+				
 				return false;
 			
 			}
@@ -134,6 +131,6 @@ $('.cover-spin').hide();
 
 			
 		});
-			$('.cover-spin').hide();
+	
 		}
 

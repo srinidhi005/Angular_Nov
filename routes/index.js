@@ -11,14 +11,21 @@ module.exports = function(passport) {
 
 		  router.get('/', function(req, res, next) {
 			      if (req.username) {
-				            res.render('source.html',{username: req.user.username, role: req.user.role});
+				            res.render('index',{username: req.user.username, role: req.user.role});
 				          } else {
 						        res.render('login');
 						      }
 			    });
 
-
-	 router.post('/login', passport.authenticate('local', { failureRedirect: '/login'}),
+/*
+	 router.post('/login', passport.authenticate('local', { failureRedirect: '/login'}), function(req, res) {
+    console.log(req.user)
+    console.log(req.session)
+    res.status(200).json({status: "SUCCESS"});
+    // res.status(200).json({status: 'SUCCESS'});
+  });*/
+	
+	router.post('/login', passport.authenticate('local', { failureRedirect: '/login'}),
     function(req, res) {  
       console.log(req.user)
     console.log(req.session)
@@ -31,7 +38,9 @@ module.exports = function(passport) {
                 }         res.redirect('/');    
         
   });
-  
+	
+	
+
   router.get('/statements', function(req, res) {
     Statement.findAll({
       include: [{

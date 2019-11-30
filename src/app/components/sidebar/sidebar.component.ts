@@ -56,7 +56,14 @@ export const ROUTES: RouteInfo[] = [
     title: "pdf",
     icon: "icon-align-center",
     class: ""
-  }
+    },
+     {
+         path: "/user",
+	 title: "User Profile",
+	 icon:"",
+	 class:""
+
+	       }
 ];
 
 @Component({
