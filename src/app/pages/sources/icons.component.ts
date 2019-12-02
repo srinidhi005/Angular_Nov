@@ -9,7 +9,11 @@ export class IconsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    
-
+  
+     $("#modalPopUpId").click(function(){
+        $("#company,#period,#statementtype,#industry,#inputfilenow").val("");
+        $("#startImportBtn").prop("disabled",true);
+    });   
   }
+   
 }

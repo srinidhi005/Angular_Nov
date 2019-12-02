@@ -7,19 +7,19 @@ select,option{
 			  }
     .myAlert-top{
 
-	      top: 2px; 
-		       
+	      top: 2px;
+
 		        width: 100%;
     }
     .myAlert-tops{
 
-	    top: 2px; 
+	    top: 2px;
 
 		    width: 100%;
     }
 
 
-    #cover-spin {
+    .cover-spin {
 	        position:fixed;
 			    width:100%;
 				        left:0;right:0;top:0;bottom:0;
@@ -38,7 +38,7 @@ select,option{
 			to {transform:rotate(360deg);}
     }
 
-    #cover-spin::after {
+    .cover-spin::after {
 	        content:'';
 			    display:block;
 				        position:absolute;
@@ -53,26 +53,27 @@ select,option{
 																		    animation: spin .8s linear infinite;
     }
 
-      </style>
-<div class=" content">
-  <!-- <div class=" row">
-    <div class=" col-md-12">
-      <div class=" card">
-        <div class=" card-header">
-          <div class=" title">Source Data
-             <div class=" btn-group btn-group-toggle float-right">
-              <label class=" btn btn-sm btn-danger btn-simple">
-                <input checked="checked" name="options" type="radio" />  
+</style>
 
-                <!-- <span class=" d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                  Import New Statement
-                </span> -->
-                <div class=" row">
+
+
+<div class=" content">
+
+        <div id="errorDiv"class="myAlert-top alert alert-warning">
+            <span id="errorText"></span>
+        </div>
+        <div id="successDiv"class="myAlert-top alert alert-success">
+            <span id="successText"></span>
+        </div>
+
+
+    <div class=" row">
                   <div class=" col-md-12">
         <div class=" btn-group btn-group-toggle float-right">
- <div class="container"> 
+ <div class="container">
   <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-sm btn-primary btn-simple" data-toggle="modal" data-target="#myModal">
+
+  <button type="button" class="btn btn-sm btn-primary btn-simple" data-toggle="modal" data-target="#myModal" id="modalPopUpId">
     Import New Statement
   </button>
 
@@ -80,39 +81,40 @@ select,option{
   <div class="modal mt-5" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-      
+
         <!-- Modal Header -->
         <div class="modal-header" style="background-color: #164A5B; padding:15px 15px 0 150px;">
           <h4 class="modal-title pb-3 pt-0" style="color:white;">Import New Statement</h4>
           <button type="button" style="padding-top:5px" class="close" data-dismiss="modal">&times;</button>
         </div>
-        
+
         <!-- Modal body -->
         <div class="modal-body">
          <div class="form-group" >
-          
- <input   type="text" id="company" style="color:black;" value=" Enter Company Name" onkeypress="allowAlphaNumeric(event)"  class="form-control  mb-2" onfocus="if (this.value == ' Enter Company Name' ) {this.value = '';}" onblur="validateCompanyName()" >
-            
-        
-                      <select class="form-control  mb-2" id="period" style="color:black;">
+
+         
+             <input _ngcontent-xip-c7="" class="form-control  mb-2" id="company" onblur="validate()" onfocus="if (this.value == ' Enter Company Name' ) {this.value = '';}" onkeypress="allowAlphaNumeric(event)" style="color:black;" type="text" placeholder=" Enter Company Name">             
+
+
+          <select class="form-control  mb-2" id="period" style="color:black;" onchange="validate()">
           <option selected disabled value="" style="font-style: italic;">Select Financial Statement Duration</option>
          <option value="M">Monthly </option>
-        <option value="Q">Quarterly</option> 
+        <option value="Q">Quarterly</option>
         <option value="Y">Yearly</option>
         </select>
-         <select class="form-control mb-2" id="statementtype" style="color:black;" >
+         <select class="form-control mb-2" id="statementtype" style="color:black;" onchange="validate()" >
           <option selected disabled value="" style="font-style: italic;">Select Statement Type</option>
           <option>Income Statement</option>
-        <option>Balance Sheet</option> 
+        <option>Balance Sheet</option>
         <option>Cash Flow Statement</option>
           <option>All Statements</option>
-       
-     
+
+
         </select>
-        <select class="form-control" id="industry" style="color:black;" >
+        <select class="form-control" id="industry" style="color:black;" onchange="validate()">
           <option selected disabled value="" style="font-style: italic;">Select Industry</option>
         <option>Communications</option>
-        <option>Consumer & Retail</option> 
+        <option>Consumer & Retail</option>
         <option>Distribution & Logistics</option>
         <option>Energy & Natural Resources</option>
         <option>Entertainment & Media</option>
@@ -128,53 +130,26 @@ select,option{
         <option>Telecommunications</option>
         <option>Transportation</option>
         </select>
-        
+
         </div>
         </div>
         <div class="file-upload-wrapper"  style="width: 500px;padding-left: 160px;font-style: italic;">
-          <input type="file" value="Drag and drop files here" id="inputfilenow"  class="file-upload" />
+          <input type="file" value="Drag and drop files here" id="inputfilenow" onchange="validate()" class="file-upload" />
         </div>
         <!-- Modal footer -->
         <div class="modal-footer"  style="text-align:-webkit-center;padding-left:160px" >
-         <!--<button type="button" class="btn btn-success" data-dismiss="modal" style="text-align:center;">Start Import</button>-->
-          <button  class="btn btn-success"  onclick="importupload(event)" id="startImportBtn" style=" width: 170px;text-align: center;">Start Import</button>
+                 <!--<button type="button" class="btn btn-success" data-dismiss="modal" style="text-align:center;">Start Import</button>-->
+          <button  class="btn btn-success"  onclick="importupload(event)" id="startImportBtn" style=" width: 170px;text-align: center;" >Start Import</button>
         </div>
-	 
+
       </div>
     </div>
   </div>
-  
- </div> 
+
+ </div>
 </div>
 
 
-                
-                <!-- <span class=" d-block d-sm-none">
-                  <i class=" tim-icons icon-single-02"> </i>
-                </span>
-              </label>
-              <label class=" btn btn-sm btn-danger btn-simple">
-                <input class=" d-none d-sm-none" name="options" type="radio" />
-
-                <span class=" d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                  Connect to QuickBooks
-                </span>
-                <span class=" d-block d-sm-none">
-                  <i class=" tim-icons icon-gift-2"> </i>
-                </span>
-               </label>  -->
-
-            <!-- </div> -->
-              <!-- </div>
-
-        </div> -->
-      </div>
-
-		 <div class="myAlert-top alert alert-success">
-			    
-			          File Uploaded Successfully Please Go to Statements Page
-				           </div>
-
-					   <div id="cover-spin"></div>
-    </div>
+        </div>
+	   <div class="cover-spin"></div>
   </div>

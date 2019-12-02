@@ -84,6 +84,7 @@
     "html2canvas": "^1.0.0-rc.5",
     "http-errors": "^1.7.3",
     "https": "^1.0.0",
+    "intl-tel-input": "^16.0.8",
     "jade": "^1.11.0",
     "jquery": "^3.4.1",
     "jsonfile": "^5.0.0",

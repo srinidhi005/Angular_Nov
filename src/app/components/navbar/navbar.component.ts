@@ -171,19 +171,24 @@ export class NavbarComponent implements OnInit, OnDestroy {
         return this.listTitles[item].title;
       }
     }
-    return "Dashboard";
+    return "Financial Planning";
   }
+  
 getCompanyName(){
-  try {
-    var queryString = window.location.href.split("?")[1];
-   var  companyName = (queryString.split("&")[0]).split("=")[1];
-     var scenarioNumber = (queryString.split("&")[1]).split("=")[1];
-     return " : "+companyName+" : " + "Scenario "+scenarioNumber;
-  } catch (error) {
-    console.log(error);
-    return "";
-  }
+    var resultString = "";
+    try{	
+        var queryString = window.location.href.split("?")[1];
+   	    var companyName = (queryString.split("&")[0]).split("=")[1];
+	    resultString = " : " + companyName
+        var scenarioNumber = (queryString.split("&")[1]).split("=")[1];
+        resultString = resultString + " Scenario :"+scenarioNumber;
+	    return resultString;
+        }catch (error) {
+            return resultString;
+        }
 }
+
+
   open(content) {
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

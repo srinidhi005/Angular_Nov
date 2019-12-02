@@ -8,5 +8,18 @@ import { Component, OnInit } from "@angular/core";
 export class ProfileComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  
+    jQuery( document ).ready( function( $ ) {   
+      if(jQuery('#telnumber-field').length){
+          var input = document.querySelector("#telnumber-field");
+         (<any>window).intlTelInput(input, {
+              preferredCountries: ['in'],
+              separateDialCode: true
+          });
+      }       
+  
+  });
+  
+  }
 }
