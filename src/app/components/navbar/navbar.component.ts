@@ -181,7 +181,7 @@ getCompanyName(){
    	    var companyName = (queryString.split("&")[0]).split("=")[1];
 	    resultString = " : " + companyName
         var scenarioNumber = (queryString.split("&")[1]).split("=")[1];
-        resultString = resultString + " Scenario :"+scenarioNumber;
+        resultString = resultString + " : Scenario "+scenarioNumber;
 	    return resultString;
         }catch (error) {
             return resultString;

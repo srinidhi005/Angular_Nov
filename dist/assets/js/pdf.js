@@ -334,3 +334,6 @@ function appendTotable(){
 	$('#myTable tr:last').after('<tr>'+str+'</tr>');
 
 	}
+
+	$("#sel2").val("1");
+	updateProjectionPdf();

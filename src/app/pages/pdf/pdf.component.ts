@@ -14,7 +14,11 @@ export class PdfComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   
-  	var companyName = decodeURI(window.location.href).split("=")[1];
+  var companyName = decodeURI(window.location.href).split("=")[1];
+ 	if(companyName.endsWith("##")){
+ 	window.location.href=(((decodeURI(window.location.href)).split("=")[0])+"="+(companyName.substring(0,companyName.length-2)));
+	window.location.reload();
+  }
 	let scenarioInput = {
 	"async": true,
 	"crossDomain": true,
@@ -101,5 +105,12 @@ export class PdfComponent implements OnInit {
 																																																	 });
 																						
 																																																	 }
-																																																	 }																							 
-			
+																																																	 visuals() {
+						
+																																																	 var companyName = decodeURI(window.location.href).split("=")[1];
+																																																	 if(companyName.endsWith("##")){
+						 	window.location.href=(((decodeURI(window.location.href)).split("=")[0])+"="+(companyName.substring(0,companyName.length-2))+"&scenario=1");
+	window.location.reload();
+  }	}																																															 }																							 
+
+				

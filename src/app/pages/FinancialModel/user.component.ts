@@ -51,7 +51,11 @@ try {
 	var queryString = window.location.href.split("?")[1];
 	 companyName = (queryString.split("&")[0]).split("=")[1];
 	 scenarioNumber = (queryString.split("&")[1]).split("=")[1];
-} catch (error) {
+	 if(companyName.endsWith("##")){
+	  	window.location.href=(((decodeURI(window.location.href)).split("=")[0])+"="+(companyName.substring(0,companyName.length-2))+"&scenario="+scenarioNumber);
+			window.location.reload();
+			  }
+	 } catch (error) {
 	console.log(error);
 }
   scenarioCount = 0;
@@ -60,7 +64,7 @@ try {
 $("#excelId").attr("href","/pdf?companyName="+companyName);
 $("#actualsId").attr("href","/actual?CompanyName="+companyName);
 $("#financialId").attr("href","/FinancialModel?CompanyName="+companyName);
-$("#metricsbtn").attr("href","#/pdf?CompanyName="+companyName);
+$("#metricsbtn").attr("href","#/pdf?CompanyName="+companyName+"##");
 
  assumptionArray = [];
 let actualsInput = {

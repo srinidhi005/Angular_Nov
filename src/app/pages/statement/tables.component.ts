@@ -46,7 +46,7 @@ export class TablesComponent implements OnInit{
     
         for (index = 0; index < resData.length; index++) {
             var obj=resData;
-	    $("#dtBasicExample tr:last").after('<tr style="color:black"><td> '+ obj[index].id + '</td> <td style="color:black">'+'<a href="#/FinancialModel?companyname='+ obj[index].company +'&scenario=1"  onclick="GTF('+obj[index].company+')" style="color:black;">'+ obj[index].company +'</a>' + '</td> <td> '+ obj[index].period  + '</td> <td> '+ obj[index].username  +' </td> <td> '+ obj[index].created_at  +' </td><td> '+ obj[index].filename  + '</td>  </tr>');
+	    $("#dtBasicExample tr:last").after('<tr style="color:black"><td> '+ obj[index].id + '</td> <td style="color:black">'+'<a href="#/FinancialModel?companyname='+ obj[index].company +'##&scenario=1"  onclick="GTF('+obj[index].company+')" style="color:black;">'+ obj[index].company +'</a>' + '</td> <td> '+ obj[index].period  + '</td> <td> '+ obj[index].username  +' </td> <td> '+ obj[index].created_at  +' </td><td> '+ obj[index].filename  + '</td>  </tr>');
         }
          
                                       }
