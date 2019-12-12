@@ -145,10 +145,9 @@ loadData(scenario);
 	
 	}
 	function visuals(){
-				var companyName = decodeURI(window.location.href).split("=")[1];
-			 	window.location.href = "/#/FinancialModel?companyname="+companyName+"&scenario=1";
-		 	}
-	
+		var companyName = decodeURI(window.location.href).split("=")[1];
+	 	window.location.href = "/#/FinancialModel?companyname="+companyName+"&scenario=1";
+ 	}
 function updateProjection(obj){
 	console.log(obj);
 	let totalRevenueArray = [];
@@ -341,3 +340,4 @@ function appendTotable(){
 
 	$("#sel2").val("1");
 	updateProjectionPdf();
+

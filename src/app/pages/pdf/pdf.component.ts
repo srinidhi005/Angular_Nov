@@ -98,19 +98,11 @@ export class PdfComponent implements OnInit {
 				width: 500,
 				 }]
 				 };
-			
-																																																	pdfMake.createPdf(docDefinition).download('RMI_Insights_Export_'+companyName+'_'+ postfix+ '.pdf');
-																																																	$("table[id='myTable'] tr:last-child").remove();
-																																																	$("table[id='myTable'] tr:first-child").remove();
-																																																	 });
-																						
-																																																	 }
-																																																	 visuals() {
-						
-																																																	 var companyName = decodeURI(window.location.href).split("=")[1];
-																																																	 if(companyName.endsWith("##")){
-						 	window.location.href=(((decodeURI(window.location.href)).split("=")[0])+"="+(companyName.substring(0,companyName.length-2))+"&scenario=1");
-	window.location.reload();
-  }	}																																															 }																							 
+	pdfMake.createPdf(docDefinition).download('RMI_Insights_Export_'+companyName+'_'+ postfix+ '.pdf');
+	$("table[id='myTable'] tr:last-child").remove();
+	$("table[id='myTable'] tr:first-child").remove();
+ });
+ }
+ }																							 
 
 				

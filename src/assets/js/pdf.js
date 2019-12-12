@@ -144,6 +144,10 @@ loadData(scenario);
 	});
 	
 	}
+	function visuals(){
+				var companyName = decodeURI(window.location.href).split("=")[1];
+			 	window.location.href = "/#/FinancialModel?companyname="+companyName+"&scenario=1";
+		 	}
 	
 function updateProjection(obj){
 	console.log(obj);
