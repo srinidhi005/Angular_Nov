@@ -79,7 +79,7 @@
     "express-session": "^1.17.0",
     "fs": "0.0.1-security",
     "hammerjs": "^2.0.8",
-    "highcharts": "^7.2.1",
+    "highcharts": "^9.0.0",
     "highcharts-draggable-points": "^2.0.10",
     "html2canvas": "^1.0.0-rc.5",
     "http-errors": "^1.7.3",
